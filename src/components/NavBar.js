@@ -5,10 +5,10 @@ import Typography from '@material-ui/core/Typography';
 
 const NavBar = () => {
     return (
-        <div>
-            <AppBar position="static">
+        <div >
+            <AppBar position="static" >
                 <Toolbar>
-                    <Typography variant="title" color="inherit">
+                    <Typography color="inherit">
                         TVMaze
                     </Typography>
                 </Toolbar>
