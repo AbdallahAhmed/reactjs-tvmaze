@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card/Card";
 
 const SearchCard = (props) => {
     const image = props.option.image ? props.option.image.original : "default"

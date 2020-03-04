@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "../../../axios";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import Grid from '@material-ui/core/Grid';
-import CardContent from "@material-ui/core/CardContent";
 import SearchCard from "./SearchCard";
 
 
