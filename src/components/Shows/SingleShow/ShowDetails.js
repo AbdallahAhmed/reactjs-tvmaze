@@ -9,6 +9,9 @@ import Navbar from "../Navbar";
 import {Route} from "react-router-dom";
 import SeasonsList from "./Seasons/SeasonsList";
 import Cast from "./Cast";
+import MetaTags from 'react-meta-tags';
+import {TITLE} from '../../../index';
+
 
 class ShowDetails extends Component {
 
@@ -39,20 +42,30 @@ class ShowDetails extends Component {
 
     render() {
         var show = "Loading";
+        var meta = "";
         if (this.state.show) {
             var image = this.state.show.image;
             image = image && image.original ? image.original : "default";
 
             var genres = this.state.show.genres ? this.state.show.genres.join(" | ") : "";
             genres = genres ? genres : this.state.show.type;
+            meta = (
+                <MetaTags>
+                    <title>{TITLE +'| ' + this.state.show.name}</title>
+                    <meta name="description" content={this.state.show.summary.replace(/<[^>]+>/g, '')} />
+                    <meta property="og:title" content={TITLE +'| ' + this.state.show.name} />
+                    <meta property="og:image" content={image} />
+                </MetaTags>
+            );
+
             show = (
                 <div>
                     < Navbar id={this.state.show.id}/>
                     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
                         <Card style={{alignSelf: 'center', maxWidth: '50%'}}>
-                            <CardMedia style={{maxHeight: 500, paddingTop: '56.25%', marginTop: '30'}}
+                            <CardMedia style={{maxHeight: 500, paddingTop: '50%', marginTop: '30'}}
                                        image={image}
-                                       title={this.state.show.title}
+                                       title={this.state.show.name}
                             />
                             <CardContent>
                                 <Typography gutterBottom style={{fontWeight: "bold"}} component="h1">
@@ -81,13 +94,14 @@ class ShowDetails extends Component {
                             </CardContent>
                         </Card>
                     </div>
-                    <Route path="/show/:id/seasons"   component={SeasonsList}/>
+                    <Route path="/show/:id/seasons" component={SeasonsList}/>
                     <Route path="/show/:id/cast" exact component={Cast}/>
                 </div>
             );
         }
         return (
             <div>
+                {meta}
                 <Search {...this.props} options={[]} home={false}/>
                 {show}
             </div>

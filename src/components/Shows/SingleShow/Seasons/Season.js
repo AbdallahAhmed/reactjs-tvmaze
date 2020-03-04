@@ -24,8 +24,13 @@ class Season extends Component {
                     episodes: response.data
                 })
             })
-    }
+    };
 
+    onEpisodeClickHandler = (id) => {
+        this.props.history.push({
+            pathname: '/episode/' +id
+        });
+    };
     render() {
         return (
             <div id={this.props.index} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
@@ -47,7 +52,7 @@ class Season extends Component {
                             {this.state.episodes.map(episode => (
                                 <TableRow key={episode.id}>
                                     <TableCell align="left" component="th" scope="row">{episode.number}</TableCell>
-                                    <TableCell align="center">{episode.name}</TableCell>
+                                    <TableCell onClick={() => {this.onEpisodeClickHandler(episode.id)}} align="center">{episode.name}</TableCell>
                                     <TableCell align="center">{episode.airdate}</TableCell>
                                     <TableCell align="center">{episode.rate ? episode.rate.average : ""}</TableCell>
                                 </TableRow>

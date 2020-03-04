@@ -44,12 +44,13 @@ class SeasonsList extends Component {
             });
             seasonsList = seasons.map((season, i) => {
                     if (season.premiereDate)
-                        return (<Season index={i + 1} style={{paddingTop: 16}} key={season.id} season={season}/>)
+                        return (<Season {...this.props} index={i + 1} style={{paddingTop: 16}} key={season.id} season={season}/>)
                     return "";
                 }
             );
         } else {
             list = "No Episodes Yet!"
+            seasonsList = "";
         }
 
 
