@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 const NavBar = () => {
     return (
         <div >
-            <AppBar position="static" >
+            <AppBar position="static" style={{width: '100%'}} >
                 <Toolbar>
                     <Typography color="inherit">
                         TVMaze

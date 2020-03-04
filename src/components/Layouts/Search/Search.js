@@ -39,7 +39,7 @@ class Search extends Component {
     }
 
     render() {
-        var search = <TextField style={{width: '100%', padding: 24}}
+        var search = <TextField style={{width: '80%', padding: 24 }}
                                 id="searchInput"
                                 placeholder="Search for Shows"
                                 margin="normal"

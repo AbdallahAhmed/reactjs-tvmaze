@@ -9,19 +9,18 @@ import Search from '../Layouts/Search/Search';
 class ShowsList extends Component {
     state = {
         shows: [],
-        searchString: ''
+        searchString: '',
+        loading: false
     }
 
-    constructor(props) {
-        super(props);
-    }
 
     getShows = () => {
         const query = this.state.searchString;
         axios.get('search/shows?q=' + query)
             .then(response => {
                 this.setState({
-                    shows: response.data
+                    shows: response.data,
+                    loading: false
                 })
             })
             .catch(error => {
@@ -32,11 +31,13 @@ class ShowsList extends Component {
     onSearchInputChange = () => {
         if (event.target.value !== '') {
             this.setState({
-                searchString: event.target.value
+                searchString: event.target.value,
+                loading: true
             }, this.getShows)
         } else {
             this.setState({
-                searchString: ''
+                searchString: '',
+                loading: true
             }, this.getShows)
         }
     }
@@ -57,7 +58,14 @@ class ShowsList extends Component {
                     ))}
                 </Grid>
             )
-        } else if (this.state.searchString !== '') {
+        } else if (this.state.loading) {
+            shows = (
+                <Typography style={{textAlign: "center"}} component="p">
+                    Loading...!
+                </Typography>
+            );
+        }
+        else if (this.state.searchString !== '') {
             shows = (
                 <Typography style={{textAlign: "center"}} component="p">
                     No Shows are found!

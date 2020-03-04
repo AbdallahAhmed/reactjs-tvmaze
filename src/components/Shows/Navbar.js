@@ -12,10 +12,9 @@ const Navbar = (props) => {
                 exact
                 >Cast</NavLink></li>
             <li><NavLink
-                exact
                 to={{
-                pathname: '/show/'+props.id+'/episodes',
-            }}>Episodes</NavLink></li>
+                pathname: '/show/'+props.id+'/seasons',
+            }}>Seasons</NavLink></li>
         </div>
     );
 };

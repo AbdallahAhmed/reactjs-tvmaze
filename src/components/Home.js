@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Episodes = () => {
+const Home = () => {
     return (
         <div>
-
+            Most Popular
         </div>
     );
 };
 
-export default Episodes;
+export default Homed;

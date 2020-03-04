@@ -11,10 +11,6 @@ class Show extends Component{
         show: this.props.show
     };
 
-    constructor(props) {
-        super(props)
-    }
-
     onNavigateHandler = () => {
         this.props.history.push({
             pathname: '/show/' + this.state.show.id
