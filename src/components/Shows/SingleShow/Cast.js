@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Cast = () => {
-    return (
-        <div>
+class Cast extends Component {
 
-        </div>
-    );
-};
+    render() {
+        return (
+            <div></div>
+        );
+    }
+}
 
 export default Cast;

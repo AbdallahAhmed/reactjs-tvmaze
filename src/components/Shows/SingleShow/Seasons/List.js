@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import axios from '../../../../axios';
 import Button from "@material-ui/core/Button";
-import Season from "./Season";
 
-class SeasonsList extends Component {
+class List extends Component {
 
     state = {
         id: this.props.match.params.id,
         seasons: [],
-        currentSeasonId: this.props.match.params.season_id,
         loading: true,
     };
+
 
     componentDidMount() {
         this.getSeasons();
@@ -30,45 +29,30 @@ class SeasonsList extends Component {
     render() {
         var list = "";
         var seasons = this.state.seasons;
-        var seasonsList = "Loading...!";
-        if (!this.state.loading && seasons.length && seasons[0].premiereDate) {
+        if (!this.state.loading && seasons.length) {
             list = seasons.map((season, i) => {
                 if (season.premiereDate) {
                     return (
-                        <Button href={"#" + (+i + 1)} key={season.id}>
+                        <Button style={{marginLeft: 4}} color="primary" onClick={() => {
+                            this.props.history.push({
+                                pathname: '/show/' + this.state.id + '/seasons/' + season.number
+                            })
+                        }
+                        } key={season.id}>
                             Season {season.number}
                         </Button>
                     )
                 }
                 return "";
             });
-            seasonsList = seasons.map((season, i) => {
-                    if (season.premiereDate)
-                        return (<Season {...this.props} index={i + 1} style={{paddingTop: 16}} key={season.id} season={season}/>)
-                    return "";
-                }
-            );
+        } else if (this.state.loading) {
+            list = "Loading...!"
         } else {
             list = "No Episodes Yet!"
-            seasonsList = "";
         }
 
-
-        return (
-            <div>
-                {/*<Route path="/show/:id/seasons/:season_id" exact component={Season}/>*/}
-                <div>
-                    {list}
-                </div>
-                {seasonsList}
-            </div>
-        );
+        return list;
     }
 }
 
-export default SeasonsList;
-/*
-
-seasons navbar
-
-seasons*/
+export default List;

@@ -19,7 +19,7 @@ class Show extends Component{
 
     render(){
         var image = this.state.show.image;
-        image = image && image.original ? image.original : "default";
+        image = image && image.original ? image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
         var summary = this.state.show.summary;
         summary = summary ? this.state.show.summary.replace(/<[^>]+>/g, '') : ""
         return (
@@ -42,7 +42,7 @@ class Show extends Component{
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button onClick={this.onNavigateHandler}>
+                            <Button color={"primary"} onClick={this.onNavigateHandler}>
                                 Go to show
                             </Button>
                         </CardActions>
