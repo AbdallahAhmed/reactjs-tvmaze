@@ -29,8 +29,8 @@ class Season extends Component {
     };
 
     onEpisodeClickHandler = (id) => {
-        const show_id = this.props.match.params.id;
-        const season_id = this.props.match.params.season_id;
+        const show_id = this.props.show_id
+        const season_id = this.props.season.id;
         this.props.history.push({
             pathname: '/show/' + show_id + '/seasons/' + season_id + '/episode/' + id,
         });
@@ -44,7 +44,7 @@ class Season extends Component {
         );
         if(this.state.episodes.length){
             table = (
-                <TableContainer id="table" component={Paper}>
+                <TableContainer component={Paper}>
                     <Table size="small">
                         <TableHead>
                             <TableRow>

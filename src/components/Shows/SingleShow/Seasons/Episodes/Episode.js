@@ -106,9 +106,7 @@ class Episode extends Component {
                                     {this.state.episode.season ? (
                                         <Typography>
                                             {"Number: "}
-                                            <NavLink style={{textDecoration: "none"}} to={'/show/' + this.state.show.id + '/seasons/' + this.state.episode.season}>
                                                 {"Season " + this.state.episode.season}
-                                            </NavLink>
                                             {this.state.episode.number ? ", Episode "+ this.state.episode.number: ""}
                                         </Typography>
                                     ) : ""}
@@ -126,41 +124,6 @@ class Episode extends Component {
                                 </CardContent>
                             </Card>
                         </Grid>
-                        {/*<Card>
-                    <CardMedia style={{paddingTop: '80%', marginTop: '30'}}
-                               image={image}
-                               title={this.state.episode.title}
-                    />
-                    <CardContent>
-                        <Typography gutterBottom style={{fontWeight: "bold"}} component="h1">
-                            {this.state.episode.name}
-                        </Typography>
-                        <Typography component="p">
-                            {this.state.episode.summary ? this.state.episode.summary.replace(/<[^>]+>/g, '') : ""}
-                        </Typography>
-                    </CardContent>
-                    <CardContent>
-                        {this.state.episode.season ? (
-                            <Typography>
-                                {"Season: " + this.state.episode.season}
-                            </Typography>
-                        ) : ""}
-                        {this.state.episode.number ? (
-                            <Typography>
-                                {"Episode: " + this.state.episode.number}
-                            </Typography>
-                        ) : ""}
-                        {this.state.episode.airdate ? (
-                            <Typography>
-                                {"Date: " + this.state.episode.airdate}
-                            </Typography>
-                        ) : ""}
-                        <Typography>
-                            See More: <a href={this.state.episode.url} target="_blank">{this.state.episode.url}</a>
-                        </Typography>
-                    </CardContent>
-                </Card>*/}
-
                     </Grid>
                 </div>
 

@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import axios from '../../../../axios';
-import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails";
+import Typography from "@material-ui/core/Typography/Typography";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Season from "./Season";
 
 class List extends Component {
 
@@ -35,17 +40,22 @@ class List extends Component {
         );
         var seasons = this.state.seasons;
         if (!this.state.loading && seasons.length) {
-            list = seasons.map((season, i) => {
+            list = seasons.map(season => {
                 if (season.premiereDate) {
                     return (
-                        <Button style={{marginLeft: 4}} color="primary" onClick={() => {
-                            this.props.history.push({
-                                pathname: '/show/' + this.state.id + '/seasons/' + season.number
-                            })
-                        }
-                        } key={season.id}>
-                            Season {season.number}
-                        </Button>
+                        <ExpansionPanel key={season.id}  square>
+                            <ExpansionPanelSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography >Season {season.number}</Typography>
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails>
+                                <Season {...this.props} show_id={this.state.id} season={season}/>
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+
                     )
                 }
                 return "";
