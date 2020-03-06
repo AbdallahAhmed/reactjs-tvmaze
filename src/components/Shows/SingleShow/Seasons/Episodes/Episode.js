@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Search from '../../../../Layouts/Search/Search'
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import MetaTags from "react-meta-tags";
 import {TITLE} from "../../../../../index";
 import Grid from "@material-ui/core/Grid";
@@ -76,6 +74,7 @@ class Episode extends Component {
                     <Grid container spacing={4}>
                         <Grid item lg={2}>
                             <img
+                                alt={this.state.episode.name}
                                 style={{height: "auto", width: "100%"}}
                                 src={image}
                                 title={this.state.episode.name}

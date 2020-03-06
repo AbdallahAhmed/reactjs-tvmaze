@@ -1,4 +1,4 @@
-import React, {Component, createRef} from 'react';
+import React, {Component} from 'react';
 import axios from "../../../axios";
 import Search from '../../Layouts/Search/Search'
 import Card from "@material-ui/core/Card";
@@ -10,6 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import List from "./Seasons/List";
 import Link from "@material-ui/core/Link/Link";
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
+import Container from "@material-ui/core/Container/Container";
 
 
 class ShowDetails extends Component {
@@ -66,18 +67,21 @@ class ShowDetails extends Component {
                     <Grid container spacing={4} key={this.state.show.id}>
                         <Grid item lg={2}>
                             <img
+                                alt={this.state.show.name}
                                 style={{height: "auto", width: "100%"}}
                                 src={image}
                                 title={this.state.show.name}
                             />
                         </Grid>
                         <Grid item lg={6}>
-                            <Typography gutterBottom style={{fontWeight: "bold"}} component="h1">
-                                {this.state.show.name}
-                            </Typography>
-                            <Typography component="p">
-                                {this.state.show.summary ? this.state.show.summary.replace(/<[^>]+>/g, '') : ""}
-                            </Typography>
+                            <Container>
+                                <Typography gutterBottom style={{fontWeight: "bold"}} component="h1">
+                                    {this.state.show.name}
+                                </Typography>
+                                <Typography component="p">
+                                    {this.state.show.summary ? this.state.show.summary.replace(/<[^>]+>/g, '') : ""}
+                                </Typography>
+                            </Container>
                         </Grid>
                         <Grid item lg={4}>
                             <Card>
