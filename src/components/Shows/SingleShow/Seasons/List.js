@@ -22,23 +22,24 @@ class List extends Component {
     }
 
     getSeasons = () => {
-        const id = this.state.id;
+        let {id} = this.props.match.params;
         axios.get('shows/' + id + '/seasons')
             .then(response => {
                 this.setState({
                     seasons: response.data,
+                    id: id,
                     loading: false,
                 });
             })
     };
 
     render() {
-        var list = (
+        let list = (
             <div style={{flexGrow: 1, padding: '2%'}}>
                 <LinearProgress variant="query" />
             </div>
         );
-        var seasons = this.state.seasons;
+        let {seasons} = this.state;
         if (!this.state.loading && seasons.length) {
             list = seasons.map(season => {
                 if (season.premiereDate) {

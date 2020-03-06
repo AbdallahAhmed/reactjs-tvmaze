@@ -3,12 +3,12 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import SearchCard from "./SearchCard";
+import {fade} from "@material-ui/core";
 
 const SearchAutoComplete = (props) => {
     return (
         <Autocomplete
             freeSolo
-            id="debug"
             options={props.options}
             getOptionLabel={option => option.name}
             clearOnEscape
@@ -18,20 +18,24 @@ const SearchAutoComplete = (props) => {
                         pathname: '/show/' + newValue.id
                     });
             }}
-            style={{width: '100%'}}
+            style={
+                {
+                    position: 'relative',
+                    backgroundColor: fade("rgba(255,255,255)", 0.15),
+                    marginRight: 4,
+                    marginLeft: 0,
+                    width: '25%',
+                }
+            }
             renderInput={params => (
-                <div style={{flexGrow: 1, padding: '2%'}}>
-                    <Grid container justify='center' spacing={2}>
-                        <Grid item xs={8}>
-                            <Grid item xs={12}>
-                                <TextField style={{width: '100%'}}
-                                           placeholder="Search for Shows"
-                                           onChange={props.changed} {...params}
-                                />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </div>
+                <TextField
+                    style={{
+                        backgroundColor: fade("rgb(255,255,255)", 0.2)
+                    }}
+                    placeholder="Search for Shows"
+                    variant={"outlined"}
+                    onChange={props.changed} {...params}
+                />
             )
             }
             renderOption={option => {

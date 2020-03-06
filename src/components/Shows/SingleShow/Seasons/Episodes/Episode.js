@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Search from '../../../../Layouts/Search/Search'
 import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import MetaTags from "react-meta-tags";
 import {TITLE} from "../../../../../index";
 import Grid from "@material-ui/core/Grid";
@@ -28,13 +30,11 @@ class Episode extends Component {
     }
 
     loadEpisode() {
-
-        const show_id = this.props.match.params.id;
-        const id = this.props.match.params.episode_id;
-        if (id) {
-            if (!this.state.episode || (this.state.episode && +this.state.episode.id !== +id)) {
-                const one = 'http://api.tvmaze.com/shows/' + show_id;
-                const two = 'http://api.tvmaze.com/episodes/' + id;
+        let {id, episode_id} = this.props.match.params;
+        if (episode_id) {
+            if (!this.state.episode || (this.state.episode && +this.state.episode.id !== +episode_id)) {
+                const one = 'http://api.tvmaze.com/shows/' + id;
+                const two = 'http://api.tvmaze.com/episodes/' + episode_id;
                 const requestOne = axios.get(one);
                 const requestTwo = axios.get(two);
                 axios.all([requestOne, requestTwo]).then(axios.spread((...res) => {
@@ -51,14 +51,14 @@ class Episode extends Component {
     }
 
     render() {
-        var episode = (
+        let episode = (
             <div style={{flexGrow: 1, padding: '2%'}}>
             <LinearProgress variant="query" />
             </div>
         );
-        var meta = "";
+        let meta = "";
         if (this.state.episode) {
-            var image = this.state.episode.image;
+            let {image} = this.state.episode;
             image = image && image.original ? image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
             meta = (
                 <MetaTags>
@@ -74,7 +74,6 @@ class Episode extends Component {
                     <Grid container spacing={4}>
                         <Grid item lg={2}>
                             <img
-                                alt={this.state.episode.name}
                                 style={{height: "auto", width: "100%"}}
                                 src={image}
                                 title={this.state.episode.name}
@@ -104,7 +103,7 @@ class Episode extends Component {
                                     ) : ""}
                                     {this.state.episode.season ? (
                                         <Typography>
-                                            {"Number: "}
+                                            Number:
                                                 {"Season " + this.state.episode.season}
                                             {this.state.episode.number ? ", Episode "+ this.state.episode.number: ""}
                                         </Typography>
@@ -123,6 +122,7 @@ class Episode extends Component {
                                 </CardContent>
                             </Card>
                         </Grid>
+
                     </Grid>
                 </div>
 
@@ -131,7 +131,6 @@ class Episode extends Component {
         return (
             <div>
                 {meta}
-                <Search {...this.props} options={[]} home={false}/>
                 {episode}
             </div>
         );

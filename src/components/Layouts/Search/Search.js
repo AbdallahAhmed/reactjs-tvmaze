@@ -40,10 +40,12 @@ class Search extends Component {
     }
 
     render() {
-        var search = (
+        let search = (
             <Grid item xs={8}>
                 <Grid item xs={12}>
-                    <TextField style={{width: '100%'}}
+                    <TextField
+                        variant="outlined"
+                        style={{width: '100%'}}
                                placeholder="Search for Shows"
                                onChange={() => {
                                    this.onSearchInputChange();

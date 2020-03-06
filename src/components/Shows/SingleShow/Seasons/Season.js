@@ -28,7 +28,7 @@ class Season extends Component {
     };
 
     onEpisodeClickHandler = (id) => {
-        const show_id = this.props.show_id
+        let {show_id} = this.props;
         const season_id = this.props.season.id;
         this.props.history.push({
             pathname: '/show/' + show_id + '/seasons/' + season_id + '/episode/' + id,
@@ -36,7 +36,7 @@ class Season extends Component {
     };
 
     render() {
-        var table = (
+        let table = (
             <div style={{flexGrow: 1, padding: '2%'}}>
                 <LinearProgress variant="query" />
             </div>

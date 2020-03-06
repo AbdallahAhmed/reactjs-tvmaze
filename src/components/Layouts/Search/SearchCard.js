@@ -7,17 +7,16 @@ import Typography from "@material-ui/core/Typography";
 const SearchCard = (props) => {
     const image = props.option.image ? props.option.image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
     return (
-        <Grid container spacing={4} alignItems="center">
-            <Grid item lg={3}>
-                <CardMedia style={{
-                    height: 0,
-                    paddingTop: '50%',
-                    align: 'right'
-                }}
-                           image={image}
+        <Grid container spacing={1} alignItems="center" justify="center" >
+            <Grid item lg={4}>
+                <img
+                    alt={name}
+                    style={{height: "auto", width: "80%"}}
+                    src={image}
+                    title={name}
                 />
             </Grid>
-            <Grid item lg={3}>
+            <Grid item lg={8}>
                 <CardContent style={{align: 'center'}}>
                     <Typography variant="body2" color="textSecondary">
                         {props.option.name}

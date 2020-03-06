@@ -16,7 +16,7 @@ import Container from "@material-ui/core/Container/Container";
 class ShowDetails extends Component {
 
     state = {
-        show: null
+        show: null,
     };
 
     componentDidMount() {
@@ -40,63 +40,62 @@ class ShowDetails extends Component {
     }
 
     render() {
-        var show = (
+        let show = (
             <div style={{flexGrow: 1, padding: '2%'}}>
-                <LinearProgress variant="query"/>
+                <LinearProgress letiant="query"/>
             </div>
         );
-        var meta = "";
+        let meta = "";
         if (this.state.show) {
-            var image = this.state.show.image;
+            let {image, genres, summary, name, network, status, premiered, language, officialSite, rating, id} = this.state.show;
             image = image && image.original ? image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
-
-            var genres = this.state.show.genres ? this.state.show.genres.join(" | ") : "";
+            genres = genres ? this.state.show.genres.join(" | ") : "";
             genres = genres ? genres : this.state.show.type;
             meta = (
                 <MetaTags>
-                    <title>{TITLE + '| ' + this.state.show.name}</title>
+                    <title>{TITLE + '| ' + name}</title>
                     <meta name="description"
-                          content={this.state.show.summary ? this.state.show.summary.replace(/<[^>]+>/g, '') : ""}/>
-                    <meta property="og:title" content={TITLE + '| ' + this.state.show.name}/>
+                          content={summary ? summary.replace(/<[^>]+>/g, '') : ""}/>
+                    <meta property="og:title" content={TITLE + '| ' + name}/>
                     <meta property="og:image" content={image}/>
                 </MetaTags>
             );
 
             show = (
                 <div style={{flexGrow: 1, padding: '2%'}}>
-                    <Grid container spacing={4} key={this.state.show.id}>
+                    <Grid container spacing={4} key={id}>
                         <Grid item lg={2}>
                             <img
-                                alt={this.state.show.name}
+                                alt={name}
                                 style={{height: "auto", width: "100%"}}
                                 src={image}
-                                title={this.state.show.name}
+                                title={name}
                             />
                         </Grid>
                         <Grid item lg={6}>
                             <Container>
                                 <Typography gutterBottom style={{fontWeight: "bold"}} component="h1">
-                                    {this.state.show.name}
+                                    {name}
                                 </Typography>
                                 <Typography component="p">
-                                    {this.state.show.summary ? this.state.show.summary.replace(/<[^>]+>/g, '') : ""}
+                                    {summary ? summary.replace(/<[^>]+>/g, '') : ""}
                                 </Typography>
                             </Container>
                         </Grid>
-                        <Grid item lg={4}>
+                        <Grid item  lg={4}>
                             <Card>
                                 <CardContent>
                                     <Typography gutterBottom variant={"h6"}>
                                         Show Info
                                     </Typography>
-                                    {this.state.show.network ? (
+                                    {network ? (
                                         <Typography>
-                                            {"Network: " + this.state.show.network.name}
+                                            {"Network: " + network.name}
                                         </Typography>
                                     ) : ""}
-                                    {this.state.show.status ? (
+                                    {status ? (
                                         <Typography>
-                                            {"Status: " + this.state.show.status}
+                                            {"Status: " + status}
                                         </Typography>
                                     ) : ""}
                                     {genres ? (
@@ -104,55 +103,44 @@ class ShowDetails extends Component {
                                             {"Genres: " + genres}
                                         </Typography>
                                     ) : ""}
-                                    {this.state.show.premiered ? (
+                                    {premiered ? (
                                         <Typography>
-                                            {"Year: " + this.state.show.premiered.substring(0, 4)}
+                                            {"Year: " + premiered.substring(0, 4)}
                                         </Typography>
                                     ) : ""}
-                                    {this.state.show.language ? (
+                                    {language ? (
                                         <Typography>
-                                            {"Language: " + this.state.show.language}
+                                            {"Language: " + language}
                                         </Typography>
                                     ) : ""}
-                                    {this.state.show.officialSite ? (
+                                    {officialSite ? (
                                         <Typography>
                                             Official Site:
                                             <Link target={"_blank"}
-                                                  href={this.state.show.officialSite}>{" " + this.state.show.officialSite}</Link>
+                                                  href={officialSite}>{" " + officialSite}</Link>
                                         </Typography>
                                     ) : ""}
-                                    {this.state.show.rating.average ? (
+                                    {rating.average ? (
                                         <Typography>
-                                            {"Rating: " + this.state.show.rating.average + " / 10"}
+                                            {"Rating: " + rating.average + " / 10"}
                                         </Typography>
                                     ) : ""}
                                 </CardContent>
                             </Card>
                         </Grid>
-                        <Grid container
-                              direction="column"
-                              alignItems="center"
-                              justify="center">
-                            <Grid item lg={12}>
-                                <List {...this.props} />
-                            </Grid>
-                        </Grid>
-                        <Grid container
-                              direction="column"
-                              alignItems="center"
-                              justify="center"
-                        >
+
+                        <Grid item  lg={12}>
+                            <List  {...this.props} />
                         </Grid>
                     </Grid>
                 </div>
             );
         }
         return (
-            <div style={{flexGrow: 1}}>
+            <Container fixed>
                 {meta}
-                <Search {...this.props} options={[]} home={false}/>
                 {show}
-            </div>
+            </Container>
         );
     }
 }
