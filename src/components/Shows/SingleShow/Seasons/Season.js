@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import axios from '../../../../axios';
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 
 
 class Season extends Component {
@@ -36,35 +37,43 @@ class Season extends Component {
     };
 
     render() {
-        return (
-            <TableContainer id="table" component={Paper}>
-                <Table size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell  align="left">Number</TableCell>
-                            <TableCell align="center">Name</TableCell>
-                            <TableCell align="center">Date</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-
-                        {this.state.episodes.map(episode => (
-                            <TableRow key={episode.id}>
-                                <TableCell style={{maxWidth: '2%'}} align="center" >{episode.number}</TableCell>
-                                <TableCell align="center">
-                                    <Button style={{color: 'navy'}} onClick={() => {
-                                        this.onEpisodeClickHandler(episode.id)
-                                    }}>
-                                        {episode.name}
-                                    </Button>
-                                </TableCell>
-                                <TableCell align="center">{episode.airdate}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+        var table = (
+            <div style={{flexGrow: 1, padding: '2%'}}>
+                <LinearProgress variant="query" />
+            </div>
         );
+        if(this.state.episodes.length){
+            table = (
+                <TableContainer id="table" component={Paper}>
+                    <Table size="small">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell  align="left">Number</TableCell>
+                                <TableCell align="center">Name</TableCell>
+                                <TableCell align="center">Date</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+
+                            {this.state.episodes.map(episode => (
+                                <TableRow key={episode.id}>
+                                    <TableCell style={{maxWidth: '2%'}} align="center" >{episode.number}</TableCell>
+                                    <TableCell align="center">
+                                        <Button style={{color: 'navy'}} onClick={() => {
+                                            this.onEpisodeClickHandler(episode.id)
+                                        }}>
+                                            {episode.name}
+                                        </Button>
+                                    </TableCell>
+                                    <TableCell align="center">{episode.airdate}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            )
+        }
+        return table;
     }
 }
 

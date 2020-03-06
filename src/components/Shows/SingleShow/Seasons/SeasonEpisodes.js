@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from '../../../../axios';
 import Season from "./Season";
+import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 
 class SeasonEpisodes extends Component {
 
@@ -27,7 +28,11 @@ class SeasonEpisodes extends Component {
 
     render() {
         var seasons = this.state.seasons;
-        var seasonsList = "Loading...!";
+        var seasonsList = (
+            <div style={{flexGrow: 1, padding: '2%'}}>
+                <LinearProgress variant="query" />
+            </div>
+        );
         if (!this.state.loading && seasons.length) {
             seasonsList = seasons.map((season, i) => {
                     if (season.premiereDate && (+season.number === +this.props.match.params.season_id))

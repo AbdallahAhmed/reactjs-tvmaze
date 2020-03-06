@@ -8,7 +8,7 @@ const NavBar = () => {
         <div>
             <AppBar position="static"  style={{width: '100%'}}>
                 <Toolbar style={{justifyContent: "center"}} >
-                    <NavLink style={{color: 'white'}} to={{
+                    <NavLink style={{color: 'white', textDecoration: "none"}} to={{
                         pathname: '/',
                     }}
                          exact

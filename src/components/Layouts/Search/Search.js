@@ -7,6 +7,7 @@ import SearchAutoComplete from "./SearchAutoComplete";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Show from "../../Shows/Show";
+import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 
 
 class Search extends Component {
@@ -23,7 +24,8 @@ class Search extends Component {
                 this.setState({
                     options: response.data.map(show => {
                         return show.show;
-                    })
+                    }),
+                    loading: false
                 })
             })
             .catch(error => {
@@ -32,14 +34,13 @@ class Search extends Component {
     };
 
     onSearchInputChange = () => {
-        if (event.target.value !== '') {
+        if (/\S/.test(event.target.value)) {
             this.setState({
-                searchString: event.target.value
+                searchString: event.target.value,
+                loading: true
             }, this.getShows)
-        } else {
-            this.setState({
-                searchString: ''
-            }, this.getShows)
+        }else if(event.target.value === ""){
+            this.setState({options: []})
         }
     }
 
@@ -61,9 +62,9 @@ class Search extends Component {
             )
         } else if (this.state.loading) {
             options = (
-                <Typography style={{textAlign: "center"}} component="p">
-                    Loading...!
-                </Typography>
+                <div style={{flexGrow: 1, padding: '2%'}}>
+                    <LinearProgress variant="query" />
+                </div>
             );
         }
         else if (this.state.searchString !== '') {

@@ -4,6 +4,7 @@ import Home from './components/Home';
 import ShowDetails from './components/Shows/SingleShow/ShowDetails';
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Episode from "./components/Shows/SingleShow/Seasons/Episodes/Episode";
 
 class App extends Component {
     render() {
@@ -12,7 +13,8 @@ class App extends Component {
                 <BrowserRouter>
                     <NavBar/>
                     <Switch>
-                        <Route path="/show/:id" component={ShowDetails}/>
+                        <Route path="/show/:id/seasons/:season_id/episode/:episode_id" exact component={Episode}/>
+                        <Route path="/show/:id" name={"show"}  component={ShowDetails}/>
                         <Route path="/" exact component={Home}/>
                         <Route component={Home} />
                     </Switch>

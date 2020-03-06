@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from '../../../../axios';
 import Button from "@material-ui/core/Button";
+import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 
 class List extends Component {
 
@@ -27,7 +28,11 @@ class List extends Component {
     };
 
     render() {
-        var list = "";
+        var list = (
+            <div style={{flexGrow: 1, padding: '2%'}}>
+                <LinearProgress variant="query" />
+            </div>
+        );
         var seasons = this.state.seasons;
         if (!this.state.loading && seasons.length) {
             list = seasons.map((season, i) => {
@@ -46,11 +51,12 @@ class List extends Component {
                 return "";
             });
         } else if (this.state.loading) {
-            list = "Loading...!"
-        } else {
-            list = "No Episodes Yet!"
+            list = (
+                <div style={{flexGrow: 1, padding: '2%'}}>
+                    <LinearProgress variant="query"/>
+                </div>
+            );
         }
-
         return list;
     }
 }
