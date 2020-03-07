@@ -1,14 +1,13 @@
 import React from 'react';
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import SearchCard from "./SearchCard";
-import {fade} from "@material-ui/core";
 
 const SearchAutoComplete = (props) => {
     return (
         <Autocomplete
             freeSolo
+            size={"small"}
             options={props.options}
             getOptionLabel={option => option.name}
             clearOnEscape
@@ -20,8 +19,7 @@ const SearchAutoComplete = (props) => {
             }}
             style={
                 {
-                    position: 'relative',
-                    backgroundColor: fade("rgba(255,255,255)", 0.15),
+                    position: "relative",
                     marginRight: 4,
                     marginLeft: 0,
                     width: '25%',
@@ -30,7 +28,9 @@ const SearchAutoComplete = (props) => {
             renderInput={params => (
                 <TextField
                     style={{
-                        backgroundColor: fade("rgb(255,255,255)", 0.2)
+                        backgroundColor: "white",
+                        borderRadius: 4
+
                     }}
                     placeholder="Search for Shows"
                     variant={"outlined"}

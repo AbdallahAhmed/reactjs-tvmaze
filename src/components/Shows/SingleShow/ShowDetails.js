@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from "../../../axios";
-import Search from '../../Layouts/Search/Search'
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -11,6 +10,7 @@ import List from "./Seasons/List";
 import Link from "@material-ui/core/Link/Link";
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 import Container from "@material-ui/core/Container/Container";
+import Img from "../../Layouts/Img";
 
 
 class ShowDetails extends Component {
@@ -65,7 +65,7 @@ class ShowDetails extends Component {
                 <div style={{flexGrow: 1, padding: '2%'}}>
                     <Grid container spacing={4} key={id}>
                         <Grid item lg={2}>
-                            <img
+                            <Img
                                 alt={name}
                                 style={{height: "auto", width: "100%"}}
                                 src={image}

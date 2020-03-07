@@ -98,13 +98,15 @@ class Home extends Component {
         let showsList = null;
         if (!this.state.loading) {
             showsList = (
+                <Container fixed>
+
                     <Grid ref={"shows"} container spacing={6} style={{padding: 60}}>
                         <Grid container direction="column"
                               alignItems="center"
                               justify="center">
                             <Grid item xs={4} sm={6} lg={12} xl={12}>
                                 <Typography color={"primary"} variant={"h5"}>
-                                    {this.state.search ? this.state.pagedShows.length ? "Results for " + '"' + this.state.query + '"' : "No Results for " + '"' + this.state.query + '"' : "Most Popular Shows"}
+                                    {this.state.search ? this.state.pagedShows.length ? `Results for "${this.state.query.toString()}"` : `No Results for "${this.state.query.toString()}"` : "Most Popular Shows"}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -114,6 +116,7 @@ class Home extends Component {
                             </Grid>
                         ))}
                     </Grid>
+                </Container>
             );
             shows = showsList;
             pagination = this.state.pagedShows.length ? (
@@ -139,7 +142,11 @@ class Home extends Component {
                         <Search {...this.props} changed={this.onSearch} home={true}/>
                     </Grid>
                     {shows}
-                    {pagination}
+                    <Grid container direction="column" alignItems="center" justify='center'>
+                        <Grid item lg={12}>
+                            {pagination}
+                        </Grid>
+                    </Grid>
                 </Grid>
             </div>
         )

@@ -14,9 +14,9 @@ class App extends Component {
                     <NavBar/>
                     <Switch>
                         <Route path="/show/:id/seasons/:season_id/episode/:episode_id" exact component={Episode}/>
-                        <Route path="/show/:id" name={"show"}  component={ShowDetails}/>
+                        <Route path="/show/:id" name={"show"} component={ShowDetails}/>
                         <Route path="/" exact component={Home}/>
-                        <Route component={Home} />
+                        <Route component={Home}/>
                     </Switch>
                 </BrowserRouter>
             </div>

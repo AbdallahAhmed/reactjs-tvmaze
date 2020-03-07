@@ -34,11 +34,7 @@ class List extends Component {
     };
 
     render() {
-        let list = (
-            <div style={{flexGrow: 1, padding: '2%'}}>
-                <LinearProgress variant="query" />
-            </div>
-        );
+        let list = "";
         let {seasons} = this.state;
         if (!this.state.loading && seasons.length) {
             list = seasons.map(season => {

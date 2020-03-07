@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import Search from '../../../../Layouts/Search/Search'
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import MetaTags from "react-meta-tags";
 import {TITLE} from "../../../../../index";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link/Link";
 import {NavLink} from "react-router-dom";
-import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
+import Img from "../../../../Layouts/Img";
+import Container from "@material-ui/core/Container/Container";
 
 
 class Episode extends Component {
@@ -44,87 +42,85 @@ class Episode extends Component {
                         show: res1.data,
                         episode: res2.data
                     })
-                    console.log(this.state)
                 })).catch(errors => () => this.props.history.push('/'))
             }
         }
     }
 
     render() {
-        let episode = (
-            <div style={{flexGrow: 1, padding: '2%'}}>
-            <LinearProgress variant="query" />
-            </div>
-        );
+        let episode = "";
         let meta = "";
         if (this.state.episode) {
-            let {image} = this.state.episode;
+            let {id} = this.state.show
+            let {image, name, summary, season, airdate, url, number} = this.state.episode;
             image = image && image.original ? image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
             meta = (
                 <MetaTags>
-                    <title>{TITLE + '| ' + this.state.episode.name}</title>
+                    <title>{TITLE + '| ' + name}</title>
                     <meta name="description"
-                          content={this.state.episode.summary ? this.state.episode.summary.replace(/<[^>]+>/g, '') : ""}/>
-                    <meta property="og:title" content={TITLE + '| ' + this.state.episode.name}/>
+                          content={summary ? summary.replace(/<[^>]+>/g, '') : ""}/>
+                    <meta property="og:title" content={TITLE + '| ' + name}/>
                     <meta property="og:image" content={image}/>
                 </MetaTags>
             );
             episode = (
-                <div style={{flexGrow: 1, padding: '2%'}}>
-                    <Grid container spacing={4}>
-                        <Grid item lg={2}>
-                            <img
-                                style={{height: "auto", width: "100%"}}
-                                src={image}
-                                title={this.state.episode.name}
-                            />
-                        </Grid>
-                        <Grid item lg={6}>
-                            <Typography gutterBottom style={{fontWeight: "bold"}} component="h1">
-                                {this.state.episode.name}
-                            </Typography>
-                            <Typography component="p">
-                                {this.state.episode.summary ? this.state.episode.summary.replace(/<[^>]+>/g, '') : ""}
-                            </Typography>
-                        </Grid>
-                        <Grid item lg={4}>
-                            <Card>
-                                <CardContent>
-                                    <Typography gutterBottom variant={"h6"}>
-                                        Episode Info
-                                    </Typography>
-                                    {this.state.show.name ? (
-                                        <Typography>
-                                            {"Show name: "}
-                                            <NavLink style={{textDecoration: "none"}} to={'/show/' + this.state.show.id}>
-                                                {this.state.show.name}
-                                            </NavLink>
+                <Container>
+                    <div style={{padding: '2%'}}>
+                        <Grid container spacing={4}>
+                            <Grid item lg={2}>
+                                <Img
+                                    style={{height: "auto", width: "100%"}}
+                                    src={image}
+                                    title={name}
+                                />
+                            </Grid>
+                            <Grid item lg={6}>
+                                <Typography gutterBottom style={{fontWeight: "bold"}} component="h1">
+                                    {name}
+                                </Typography>
+                                <Typography component="p">
+                                    {summary ? summary.replace(/<[^>]+>/g, '') : ""}
+                                </Typography>
+                            </Grid>
+                            <Grid item lg={4}>
+                                <Card>
+                                    <CardContent>
+                                        <Typography gutterBottom variant={"h6"}>
+                                            Episode Info
                                         </Typography>
-                                    ) : ""}
-                                    {this.state.episode.season ? (
-                                        <Typography>
-                                            Number:
-                                                {"Season " + this.state.episode.season}
-                                            {this.state.episode.number ? ", Episode "+ this.state.episode.number: ""}
-                                        </Typography>
-                                    ) : ""}
-                                    {this.state.episode.airdate ? (
-                                        <Typography>
-                                            {"Airdate: " + this.state.episode.airdate}
-                                        </Typography>
-                                    ) : ""}
-                                    {this.state.episode.url ? (
-                                        <Typography>
-                                            URL: <Link target={"_blank"}
-                                                       href={this.state.episode.url}>{" " + this.state.episode.url}</Link>
-                                        </Typography>
-                                    ) : ""}
-                                </CardContent>
-                            </Card>
-                        </Grid>
+                                        {name ? (
+                                            <Typography>
+                                                {"Show name: "}
+                                                <NavLink style={{textDecoration: "none"}} to={'/show/' + id}>
+                                                    {name}
+                                                </NavLink>
+                                            </Typography>
+                                        ) : ""}
+                                        {season ? (
+                                            <Typography>
+                                                Number:
+                                                {"Season " + season}
+                                                {number ? ", Episode " + season : ""}
+                                            </Typography>
+                                        ) : ""}
+                                        {airdate ? (
+                                            <Typography>
+                                                {"Airdate: " + airdate}
+                                            </Typography>
+                                        ) : ""}
+                                        {url ? (
+                                            <Typography>
+                                                URL: <Link target={"_blank"}
+                                                           href={url}>{" " + url}</Link>
+                                            </Typography>
+                                        ) : ""}
+                                    </CardContent>
+                                </Card>
+                            </Grid>
 
-                    </Grid>
-                </div>
+                        </Grid>
+                    </div>
+                </Container>
 
             );
         }
