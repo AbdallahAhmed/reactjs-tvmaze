@@ -11,6 +11,7 @@ const NavBar = (props) => {
                 <Toolbar style={{justifyContent: "space-between"}} >
                     <NavLink style={{color: 'white', textDecoration: "none"}} to={{
                         pathname: '/',
+                        search: ''
                     }}
                          exact
                     >
