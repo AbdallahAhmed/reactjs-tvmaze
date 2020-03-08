@@ -51,7 +51,7 @@ class Episode extends Component {
         let episode = "";
         let meta = "";
         if (this.state.episode) {
-            let {id} = this.state.show
+            let {id} = this.state.show;
             let {image, name, summary, season, airdate, url, number} = this.state.episode;
             image = image && image.original ? image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
             meta = (
@@ -88,11 +88,11 @@ class Episode extends Component {
                                         <Typography gutterBottom variant={"h6"}>
                                             Episode Info
                                         </Typography>
-                                        {name ? (
+                                        {this.state.show.name ? (
                                             <Typography>
                                                 {"Show name: "}
                                                 <NavLink style={{textDecoration: "none"}} to={'/show/' + id}>
-                                                    {name}
+                                                    {this.state.show.name}
                                                 </NavLink>
                                             </Typography>
                                         ) : ""}
