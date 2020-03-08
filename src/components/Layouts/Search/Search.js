@@ -44,6 +44,7 @@ class Search extends Component {
             <Grid item xs={8}>
                 <Grid item xs={12}>
                     <TextField
+                        value={this.props.query}
                         variant="outlined"
                         style={{width: '100%'}}
                                placeholder="Search for Shows"

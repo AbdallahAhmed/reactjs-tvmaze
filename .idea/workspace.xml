@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b88bb1d-c929-49b9-911c-47fc0f883833" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layouts/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layouts/Search/Search.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,18 +16,19 @@
     <session id="-1178433779">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.75" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="js" value="246" />
+          <entry key="js" value="248" />
           <entry key="json" value="7" />
           <entry key="md" value="1" />
           <entry key="rnc" value="1" />
@@ -36,7 +39,7 @@
         <counts>
           <entry key="Git file" value="1" />
           <entry key="JSON" value="7" />
-          <entry key="JavaScript" value="246" />
+          <entry key="JavaScript" value="248" />
           <entry key="Markdown" value="1" />
           <entry key="RNG Compact" value="1" />
           <entry key="TypeScript" value="3" />
@@ -44,14 +47,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="26237" />
+          <entry key="js" value="26896" />
           <entry key="json" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="26237" />
+          <entry key="JavaScript" value="26896" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -75,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="69" column="42" lean-forward="true" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
+            <state relative-caret-position="358">
+              <caret line="256" column="55" selection-start-line="256" selection-start-column="55" selection-end-line="256" selection-end-column="55" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -99,7 +102,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
+            <state relative-caret-position="585">
               <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -121,10 +124,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Season.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+            <state relative-caret-position="1290">
+              <caret line="86" column="49" lean-forward="true" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -133,24 +136,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Layouts/Search/Search.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Shows/Show.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+            <state relative-caret-position="735">
+              <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="94" column="73" selection-start-line="94" selection-start-column="73" selection-end-line="94" selection-end-column="73" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,22 +150,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/ShowDetails.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="1605">
               <caret line="107" column="81" selection-start-line="107" selection-start-column="56" selection-end-line="107" selection-end-column="81" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Layouts/Search/SearchCard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -244,17 +223,17 @@
         <option value="$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/SeasonEpisodes.js" />
         <option value="$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Season.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/components/Layouts/Search/Search.js" />
         <option value="$PROJECT_DIR$/src/components/Layouts/Search/SearchAutoComplete.js" />
         <option value="$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/List.js" />
         <option value="$PROJECT_DIR$/src/components/Shows/SingleShow/ShowDetails.js" />
-        <option value="$PROJECT_DIR$/src/components/Shows/Show.js" />
         <option value="$PROJECT_DIR$/src/components/Layouts/Search/SearchCard.js" />
         <option value="$PROJECT_DIR$/src/components/Layouts/Img.js" />
         <option value="$PROJECT_DIR$/src/components/Layouts/NavBar.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Home.js" />
         <option value="$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js" />
+        <option value="$PROJECT_DIR$/src/components/Shows/Show.js" />
+        <option value="$PROJECT_DIR$/src/components/Layouts/Search/Search.js" />
+        <option value="$PROJECT_DIR$/src/components/Home.js" />
       </list>
     </option>
   </component>
@@ -273,7 +252,6 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="683" />
     <option name="y" value="27" />
     <option name="width" value="683" />
     <option name="height" value="741" />
@@ -285,83 +263,10 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="Search" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Shows" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Shows" type="462c0819:PsiDirectoryNode" />
-              <item name="SingleShow" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Shows" type="462c0819:PsiDirectoryNode" />
-              <item name="SingleShow" type="462c0819:PsiDirectoryNode" />
-              <item name="Seasons" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kijamii-material-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kijamii-material-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Shows" type="462c0819:PsiDirectoryNode" />
-              <item name="SingleShow" type="462c0819:PsiDirectoryNode" />
-              <item name="Seasons" type="462c0819:PsiDirectoryNode" />
-              <item name="Episodes" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="seaso&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/SingleShow/Seasons/Season.js&#10;epis&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js&#10;showD&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/SingleShow/ShowDetails.js&#10;sear&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Layouts/Search/Search.js&#10;show&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/Show.js&#10;App&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/App.js&#10;pac&#9;FILE&#9;file:///var/www/kijamii-material-ui/package.json" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/Show.js&#10;show&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/Show.js&#10;seaso&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/SingleShow/Seasons/Season.js&#10;epis&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js&#10;showD&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Shows/SingleShow/ShowDetails.js&#10;sear&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/components/Layouts/Search/Search.js&#10;App&#9;FILE&#9;file:///var/www/kijamii-material-ui/src/App.js&#10;pac&#9;FILE&#9;file:///var/www/kijamii-material-ui/package.json" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -408,11 +313,12 @@
       <workItem from="1583281148132" duration="3978000" />
       <workItem from="1583324814159" duration="101329000" />
       <workItem from="1583592475777" duration="21572000" />
+      <workItem from="1583690894888" duration="798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153175000" />
+    <option name="totallyTimeSpent" value="155903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -429,11 +335,12 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.63414633" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.24847561" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3125" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.103658535" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -508,16 +415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Shows/Show.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -525,9 +422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -535,16 +429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Layouts/Search/Search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -558,10 +442,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/List.js">
+    <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+        <state relative-caret-position="45">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1290">
+          <caret line="86" column="49" lean-forward="true" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/ShowDetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="107" column="81" selection-start-line="107" selection-start-column="56" selection-end-line="107" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Shows/Show.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Layouts/Search/Search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-409">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -578,47 +509,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/List.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="420">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="69" column="42" lean-forward="true" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/ShowDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="107" column="81" selection-start-line="107" selection-start-column="56" selection-end-line="107" selection-end-column="81" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Shows/SingleShow/Seasons/Episodes/Episode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="94" column="73" selection-start-line="94" selection-start-column="73" selection-end-line="94" selection-end-column="73" />
+        <state relative-caret-position="358">
+          <caret line="256" column="55" selection-start-line="256" selection-start-column="55" selection-end-line="256" selection-end-column="55" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

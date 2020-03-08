@@ -187,7 +187,7 @@ class Home extends Component {
 
 
     render() {
-        let {search, loading, query, paginationCount, paginationPage, pagedShows, params} = this.state
+        let {search, loading, query, paginationCount, paginationPage, pagedShows, params, rate, year, genre} = this.state;
         let shows = (
             <Grid item xs={12} sm={6} lg={3} xl={3}>
                 <LinearProgress variant="query"/>
@@ -237,14 +237,14 @@ class Home extends Component {
                     {meta}
                     <Grid container justify="center" spacing={2}>
                         <Grid container justify='center'>
-                            <Search {...this.props} changed={this.onSearch} home={true}/>
+                            <Search {...this.props} query={this.state.query} changed={this.onSearch} home={true}/>
                         </Grid>
                         <Grid container spacing={1} justify="center" style={{paddingTop: 12}}>
                             <Grid item lg={3}>
                                 <FormControl style={{maxWidth: 100}}>
                                     <InputLabel htmlFor="age-native-simple">Year</InputLabel>
-                                    <NativeSelect onChange={(event) => this.onSelectChange(event, "year")}>
-                                        <option value="" ></option>
+                                    <NativeSelect value={year !== "" ? year : ""} onChange={(event) => this.onSelectChange(event, "year")}>
+                                        <option value="" />
                                         {YEARS.map(year => (
                                             <option key={year} value={year}>{year}</option>
                                         ))}
@@ -254,8 +254,8 @@ class Home extends Component {
                             <Grid item lg={3}>
                                 <FormControl style={{minWidth: 100}}>
                                     <InputLabel htmlFor="age-native-simple">Rate</InputLabel>
-                                    <NativeSelect onChange={(event) => this.onSelectChange(event, "rate")}>
-                                        <option value=""></option>
+                                    <NativeSelect value={rate !== "" ? rate : ""} onChange={(event) => this.onSelectChange(event, "rate")}>
+                                        <option value="" />
                                         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(rate => (
                                             <option key={rate} value={rate}>{`+${rate}`}</option>
                                         ))}
@@ -265,8 +265,8 @@ class Home extends Component {
                             <Grid item lg={3}>
                                 <FormControl style={{maxWidth: 100}}>
                                     <InputLabel htmlFor="age-native-simple">Genre</InputLabel>
-                                    <NativeSelect onChange={(event) => this.onSelectChange(event, "genre")}>
-                                        <option value="" defaultChecked={Object.keys(params).length ? true : false}></option>
+                                    <NativeSelect value={genre !== "" ? genre : ""} onChange={(event) => this.onSelectChange(event, "genre")}>
+                                        <option value=""/>
                                         {GENRES.map(gen => (
                                             <option key={gen} value={gen.toLowerCase()}>{gen}</option>
                                         ))}
