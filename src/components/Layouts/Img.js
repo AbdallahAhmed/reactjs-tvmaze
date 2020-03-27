@@ -10,7 +10,7 @@ class Img extends Component {
 
     render() {
         const {loaded} = this.state;
-        let {src, title, style} = this.props
+        let {src, title, style} = this.props;
         return (
             <div>
                 {!loaded ? (

@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import MetaTags from "react-meta-tags";
-import {TITLE} from "../../../../../index";
+import {TITLE} from "../../../../../constants";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link/Link";
 import {NavLink} from "react-router-dom";

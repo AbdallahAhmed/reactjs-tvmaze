@@ -2,60 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import {applyMiddleware, compose, createStore} from 'redux';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
+import shows from './store/reducers/shows';
 
-export const TITLE = "TVMaze ";
-
-export const GENRES = [
-    "Action",
-    "Adventure",
-    "Animation",
-    "Biography",
-    "Comedy",
-    "Crime",
-    "Documentary",
-    "Drama",
-    "Family",
-    "Fantasy",
-    "Film-Noir",
-    "Game-Show",
-    "History",
-    "Horror",
-    "Music",
-    "Musical",
-    "Mystery",
-    "News",
-    "Reality-Tv",
-    "Romance",
-    "Science-Fiction",
-    "Sport",
-    "Talk-Show",
-    "Thriller",
-    "War",
-    "Westren",
-];
-
-export const GENRE_VALUES = GENRES.map(genre => {
-    return genre.toLowerCase();
-});
-
-
-export const YEARS = [
-    2002,
-    2003,
-    2004,
-    2005,
-    2006,
-    2007,
-    2008,
-    2009,
-    2010,
-    2011,
-    2012,
-    2013,
-    2014,
-];
-
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose();
+const reducer = shows;
+const store = createStore(
+    reducer,
+    composeEnhancers(applyMiddleware(thunk))
+);
 ReactDOM.render(
-    <App/>,
+    <Provider store={store}>
+        <App/>
+    </Provider>
+    ,
     document.getElementById('root')
 );

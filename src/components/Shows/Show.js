@@ -2,9 +2,9 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Img from "../Layouts/Img";
+import {NavLink} from "react-router-dom";
 
 const Show = (props) => {
     let {image, summary, name, title, id} = props.show;
@@ -40,13 +40,12 @@ const Show = (props) => {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button color={"primary"} onClick={() => {
-                            props.history.push({
-                                pathname: '/show/' + id
-                            });
-                        }}>
+                        <NavLink color={"primary"}
+                                 style={{textDecoration: "none"}}
+                                 to={'/show/' + id}
+                        >
                             Go to show
-                        </Button>
+                        </NavLink>
                     </CardActions>
                 </Card>
             ) : ""}

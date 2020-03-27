@@ -3,41 +3,42 @@ import TextField from "@material-ui/core/TextField";
 import axios from "../../../axios";
 import SearchAutoComplete from "./SearchAutoComplete";
 import Grid from "@material-ui/core/Grid";
+import * as actions from '../../../store/actions/index';
+import {connect} from "react-redux";
+
 class Search extends Component {
     state = {
-        searchString: '',
-        loading: false,
         options: [],
     };
 
-    getShows = () => {
-        const query = this.state.searchString;
-        axios.get('search/shows?q=' + query)
-            .then(response => {
-                this.setState({
-                    options: response.data.map(show => {
-                        return show.show;
-                    }),
-                    loading: false
+    getShows = (query) => {
+        if (!this.props.home) {
+            axios.get('search/shows?q=' + query)
+                .then(response => {
+                    this.setState({
+                        options: response.data.map(show => {
+                            return show.show;
+                        })
+                    });
                 })
-                this.props.changed(this.state.options, query);
-            })
-            .catch(error => {
-                console.log("Error occurred:" + error)
-            })
+                .catch(error => {
+                    console.log("Error occurred:" + error)
+                })
+        } else {
+            this.props.onSearch(query);
+            this.props.changed(query);
+        }
     };
 
     onSearchInputChange = () => {
         if (/\S/.test(event.target.value)) {
-            this.setState({
-                searchString: event.target.value,
-                loading: true
-            }, this.getShows)
-        } else if (event.target.value === "") {
-            this.setState({options: []})
-            this.props.changed([], "");
+            this.getShows(event.target.value)
+        } else {
+            this.setState({options: []});
+            if (this.props.home)
+                this.getShows(event.target.value);
         }
-    }
+    };
 
     render() {
         let search = (
@@ -47,13 +48,13 @@ class Search extends Component {
                         value={this.props.query}
                         variant="outlined"
                         style={{width: '100%'}}
-                               placeholder="Search for Shows"
-                               onChange={() => {
-                                   this.onSearchInputChange();
-                               }}/>
+                        placeholder="Search for Shows"
+                        onChange={() => {
+                            this.onSearchInputChange();
+                        }}/>
                 </Grid>
             </Grid>
-        )
+        );
         if (!this.props.home) {
             search = (
                 <SearchAutoComplete
@@ -66,4 +67,16 @@ class Search extends Component {
     }
 }
 
-export default Search;
+
+const mapStateToProps = state => {
+    return {
+        query: state.search.query,
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSearch: (query) => dispatch(actions.search(query))
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
