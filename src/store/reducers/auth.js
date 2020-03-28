@@ -5,6 +5,7 @@ const initialState = {
     token: localStorage.getItem("token") || null,
     error: null,
     loading: false,
+    updated: false
 };
 
 const user = (state, data) => {
@@ -15,14 +16,22 @@ const user = (state, data) => {
         ...state,
         user: user,
         token: token,
-        loading: false
+        loading: false,
+        error: false,
+        updated: true
     }
 };
 
-const logout = () => {
+
+const logout = (state) => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-    return initialState;
+    return {
+        ...state,
+        user: null,
+        token: null,
+        updated: false
+    };
 };
 
 const reducer = (state = initialState, action) => {
@@ -54,7 +63,22 @@ const reducer = (state = initialState, action) => {
                 loading: false
             };
         case actionTypes.LOGOUT:
-            return logout();
+            return logout(state);
+        case actionTypes.UPDATE_START:
+            return {
+                ...state,
+                loading: true,
+                updated: false
+            };
+        case actionTypes.UPDATE_SUCCESS:
+            return user(state, action.data);
+        case actionTypes.UPDATE_FAIL:
+            return {
+                ...state,
+                error: action.error,
+                loading: false,
+                updated: false
+            };
         default:
             return state;
 

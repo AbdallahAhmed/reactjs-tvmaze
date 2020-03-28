@@ -72,7 +72,8 @@ const navToolbar = (props) => {
                             onClick={handleMenu}
                             color="inherit"
                         >
-                            <Avatar variant={"rounded"} src={"http://static.tvmaze.com/uploads/images/original_untouched/230/575652.jpg"}/>
+                            <Avatar variant={"circle"}
+                                    src={ user && user.avatar ? user.avatar : null}/>
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -89,9 +90,18 @@ const navToolbar = (props) => {
                             open={open}
                             onClose={handleClose}
                         >
-                            <MenuItem onClick={handleClose}>{user.name}</MenuItem>
                             <MenuItem onClick={handleClose}>
-                                <NavLink style={{textDecoration: "none", color: "black"}}  to={{
+                                <NavLink style={{textDecoration: "none", color: "black"}} to={{
+                                    pathname: '/account',
+                                    search: ''
+                                }}
+                                         exact
+                                >
+                                    {user.name}
+                                </NavLink>
+                            </MenuItem>
+                            <MenuItem onClick={handleClose}>
+                                <NavLink style={{textDecoration: "none", color: "black"}} to={{
                                     pathname: '/auth/logout',
                                     search: ''
                                 }}

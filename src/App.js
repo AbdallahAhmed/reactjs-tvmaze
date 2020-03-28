@@ -8,6 +8,8 @@ import Episode from "./components/Shows/SingleShow/Seasons/Episodes/Episode";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
 import Logout from "./components/User/Logout";
+import Edit from "./components/User/Edit";
+import {connect} from "react-redux";
 
 class App extends Component {
     render() {
@@ -19,6 +21,7 @@ class App extends Component {
                         <Route path="/auth/register" exact component={Register}/>
                         <Route path="/auth/login" exact component={Login}/>
                         <Route path="/auth/logout" exact component={Logout}/>
+                        {this.props.isAuth ? <Route path="/account" exact component={Edit}/> : null}
                         <Route path="/show/:id/seasons/:season_id/episode/:episode_id" exact component={Episode}/>
                         <Route path="/show/:id" name={"show"} component={ShowDetails}/>
                         <Route path="/" exact component={Home}/>
@@ -30,4 +33,9 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.user
+    }
+};
+export default connect(mapStateToProps)(App);

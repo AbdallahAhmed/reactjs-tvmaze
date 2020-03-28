@@ -8,5 +8,6 @@ export {
 export {
     register,
     login,
-    logout
+    logout,
+    update
 } from './auth'

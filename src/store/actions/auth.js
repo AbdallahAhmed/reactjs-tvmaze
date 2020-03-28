@@ -1,26 +1,26 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-const url = "http://fleet-management.local/api/auth/"; //"https://agile-basin-94102.herokuapp.com/api/auth/";
+const url = "https://agile-basin-94102.herokuapp.com/api/auth/";
 
 export const registerStart = () => {
     return {
         type: actionTypes.REGISTER_START
-    }
+    };
 };
 
 export const registerSuccess = (data) => {
     return {
         type: actionTypes.REGISTER_SUCCESS,
         data: data
-    }
+    };
 };
 
 export const registerFail = (error) => {
     return {
         type: actionTypes.REGISTER_FAIL,
         error: error
-    }
+    };
 };
 
 export const register = (data) => {
@@ -31,28 +31,28 @@ export const register = (data) => {
                 dispatch(registerSuccess(res.data.data));
             }).catch(err => {
             dispatch(registerFail(err.response.data.errors));
-        })
-    }
+        });
+    };
 };
 
 export const loginStart = () => {
     return {
         type: actionTypes.LOGIN_START
-    }
+    };
 };
 
 export const loginSuccess = (data) => {
     return {
         type: actionTypes.LOGIN_SUCCESS,
         data: data
-    }
+    };
 };
 
 export const loginFail = (error) => {
     return {
         type: actionTypes.LOGIN_FAIL,
         error: error
-    }
+    };
 };
 
 export const login = (data) => {
@@ -63,12 +63,57 @@ export const login = (data) => {
                 dispatch(loginSuccess(res.data.data));
             }).catch(err => {
             dispatch(loginFail(err.response.data.errors));
-        })
-    }
+        });
+    };
 };
 
 export const logout = () => {
     return {
         type: actionTypes.LOGOUT
-    }
+    };
+};
+
+export const updateStart = () => {
+    return {
+        type: actionTypes.UPDATE_START
+    };
+};
+
+export const updateSuccess = (data) => {
+    return {
+        type: actionTypes.UPDATE_SUCCESS,
+        data: data
+    };
+};
+
+export const updateFail = (error) => {
+    return {
+        type: actionTypes.UPDATE_FAIL,
+        error: error
+    };
+};
+
+export const update = (data) => {
+    return dispatch => {
+        dispatch(updateStart());
+        let formData = new FormData();
+        formData.append("email", data.email);
+        formData.append("name", data.name);
+        if (data.imageData)
+            formData.append("image", data.imageData);
+        if (data.password)
+            formData.append("password", data.password);
+
+        axios.post(url + 'update', formData, {
+            headers: {
+                'Authorization': "Bearer " + localStorage.getItem("token"),
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+            .then(res => {
+                dispatch(updateSuccess(res.data.data));
+            }).catch(err => {
+            dispatch(updateFail(err.response.data.errors));
+        });
+    };
 };

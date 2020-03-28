@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Input.css';
 
-const input = ( props ) => {
+const input = (props) => {
     let inputElement = "";
     let inputClasses = "InputElement ";
 
@@ -10,22 +10,22 @@ const input = ( props ) => {
         inputClasses += "Invalid ";
     }
 
-    switch ( props.elementType ) {
-        case ( 'input' ):
+    switch (props.elementType) {
+        case ('input'):
             inputElement = <input
                 className={inputClasses}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed} />;
+                onChange={props.changed}/>;
             break;
-        case ( 'textarea' ):
+        case ('textarea'):
             inputElement = <textarea
                 className={inputClasses}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed} />;
+                onChange={props.changed}/>;
             break;
-        case ( 'select' ):
+        case ('select'):
             inputElement = (
                 <select
                     className={inputClasses}
@@ -39,16 +39,24 @@ const input = ( props ) => {
                 </select>
             );
             break;
+        case ('file'):
+            inputElement = (
+                <input
+                    {...props.elementConfig}
+                    onChange={props.changed}
+                />
+            );
+            break;
         default:
             inputElement = <input
                 className={inputClasses}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed} />;
+                onChange={props.changed}/>;
     }
 
-    return (
-        <div className={"Input"}>
+    return  (
+        <div className={"Input"} style={{display: props.hidden ? "none" : "block"}}>
             <label className={"Label"}>{props.label}</label>
             {inputElement}
         </div>
