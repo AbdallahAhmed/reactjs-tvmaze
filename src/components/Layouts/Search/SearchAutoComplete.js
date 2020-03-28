@@ -22,7 +22,6 @@ const SearchAutoComplete = (props) => {
                     position: "relative",
                     marginRight: 4,
                     marginLeft: 0,
-                    width: '25%',
                 }
             }
             renderInput={params => (

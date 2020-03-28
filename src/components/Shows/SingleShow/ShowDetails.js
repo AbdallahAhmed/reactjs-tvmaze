@@ -10,7 +10,7 @@ import List from "./Seasons/List";
 import Link from "@material-ui/core/Link/Link";
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 import Container from "@material-ui/core/Container/Container";
-import Img from "../../Layouts/Img";
+import Img from "../../Layouts/UI/Img";
 
 
 class ShowDetails extends Component {

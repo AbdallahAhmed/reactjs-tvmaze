@@ -3,4 +3,10 @@ export {
     changePage,
     search,
     filterShows,
-} from './shows'
+} from './shows';
+
+export {
+    register,
+    login,
+    logout
+} from './auth'

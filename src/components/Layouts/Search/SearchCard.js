@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Img from "../Img";
+import Img from "../UI/Img";
 
 const SearchCard = (props) => {
     const image = props.option.image ? props.option.image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";

@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Img from "../Layouts/Img";
+import Img from "../Layouts/UI/Img";
 import {NavLink} from "react-router-dom";
 
 const Show = (props) => {
@@ -51,7 +51,7 @@ const Show = (props) => {
             ) : ""}
         </div>
     )
-}
+};
 
 
 export default Show;

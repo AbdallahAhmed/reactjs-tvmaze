@@ -1,5 +1,5 @@
 {
-  "name": "kijamii-material-ui",
+  "name": "tv-maze",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,7 +12,6 @@
     "react-meta-tags": "^0.7.4",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "0.9.5",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },

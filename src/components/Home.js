@@ -204,16 +204,16 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        shows: state.shows,
-        loading: state.loading,
-        search: state.search.status,
-        query: state.search.query,
-        pagedShows: state.pageShows,
-        paginationPage: state.paginationPage,
-        paginationCount: state.paginationCount,
-        error: state.error,
-        params: state.filter.params,
-        filter: state.filter.status
+        shows: state.shows.shows,
+        loading: state.shows.loading,
+        search: state.shows.search.status,
+        query: state.shows.search.query,
+        pagedShows: state.shows.pageShows,
+        paginationPage: state.shows.paginationPage,
+        paginationCount: state.shows.paginationCount,
+        error: state.shows.error,
+        params: state.shows.filter.params,
+        filter: state.shows.filter.status
     }
 };
 

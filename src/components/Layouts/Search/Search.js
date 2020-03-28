@@ -70,7 +70,7 @@ class Search extends Component {
 
 const mapStateToProps = state => {
     return {
-        query: state.search.query,
+        query: state.shows.search.query,
     }
 };
 

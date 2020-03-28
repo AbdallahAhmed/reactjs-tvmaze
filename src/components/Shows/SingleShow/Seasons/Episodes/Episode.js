@@ -8,7 +8,7 @@ import {TITLE} from "../../../../../constants";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link/Link";
 import {NavLink} from "react-router-dom";
-import Img from "../../../../Layouts/Img";
+import Img from "../../../../Layouts/UI/Img";
 import Container from "@material-ui/core/Container/Container";
 
 
