@@ -10,10 +10,10 @@ const SearchCard = (props) => {
         <Grid container spacing={1} alignItems="center" justify="center" >
             <Grid item lg={4}>
                 <Img
-                    alt={name}
+                    alt={props.option.name}
                     style={{height: "auto", width: "80%"}}
                     src={image}
-                    title={name}
+                    title={props.option.name}
                 />
             </Grid>
             <Grid item lg={8}>

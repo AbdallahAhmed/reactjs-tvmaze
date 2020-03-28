@@ -119,7 +119,7 @@ class Login extends Component {
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
-                    <Button btnType={"Success"}>Login</Button>
+                    {this.props.loading ? null : <Button btnType={"Success"}>Login</Button>}
                 </form>
             </div>
         );

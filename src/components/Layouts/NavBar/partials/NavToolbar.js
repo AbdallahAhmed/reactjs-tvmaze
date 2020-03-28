@@ -50,10 +50,12 @@ const navToolbar = (props) => {
                         TVMaze
                     </NavLink>
                 </Typography>
-                <div className={classes.search}>
-                    <Search changed={() => {
-                    }}/>
-                </div>
+                {props.history.location.pathname !== "/" ?(
+                    <div className={classes.search}>
+                        <Search changed={() => {
+                        }}/>
+                    </div>
+                ) : null}
                 {isAuth ? (
                     <div>
                         <IconButton
@@ -91,7 +93,7 @@ const navToolbar = (props) => {
                             onClose={handleClose}
                         >
                             <MenuItem onClick={handleClose}>
-                                <NavLink style={{textDecoration: "none", color: "black"}} to={{
+                                <NavLink style={{textDecoration: "none", color: "black", flexGrow: 1}} to={{
                                     pathname: '/account',
                                     search: ''
                                 }}
@@ -101,7 +103,7 @@ const navToolbar = (props) => {
                                 </NavLink>
                             </MenuItem>
                             <MenuItem onClick={handleClose}>
-                                <NavLink style={{textDecoration: "none", color: "black"}} to={{
+                                <NavLink style={{textDecoration: "none", color: "black", flexGrow: 1}} to={{
                                     pathname: '/auth/logout',
                                     search: ''
                                 }}

@@ -147,7 +147,9 @@ class Home extends Component {
                         <Grid container spacing={1} justify="center" style={{paddingTop: 12}}>
                             <Grid item lg={3}>
                                 <FormControl style={{maxWidth: 100}}>
-                                    <InputLabel htmlFor="age-native-simple">Year</InputLabel>
+                                    <InputLabel htmlFor="age-native-simple" shrink={year !== ""} style={{
+                                        position: "relative"
+                                    }}>Year</InputLabel>
                                     <NativeSelect value={year !== "" ? year : ""}
                                                   onChange={(event) => this.onSelectChange(event, "year")}>
                                         <option value="">{null}</option>
@@ -159,7 +161,9 @@ class Home extends Component {
                             </Grid>
                             <Grid item lg={3}>
                                 <FormControl style={{minWidth: 100}}>
-                                    <InputLabel htmlFor="age-native-simple">Rate</InputLabel>
+                                    <InputLabel htmlFor="age-native-simple" shrink={rate !== ""} style={{
+                                        position: "relative",
+                                    }}>Rate</InputLabel>
                                     <NativeSelect value={rate !== "" ? rate : ""}
                                                   onChange={(event) => this.onSelectChange(event, "rate")}>
                                         <option value=""/>
@@ -170,8 +174,10 @@ class Home extends Component {
                                 </FormControl>
                             </Grid>
                             <Grid item lg={3}>
-                                <FormControl style={{maxWidth: 100}}>
-                                    <InputLabel htmlFor="age-native-simple">Genre</InputLabel>
+                                <FormControl style={{maxWidth: 100, margin: 2}}>
+                                    <InputLabel htmlFor="age-native-simple" shrink={genre !== ""} style={{
+                                        position: "relative"
+                                    }}>Genre</InputLabel>
                                     <NativeSelect value={genre !== "" ? genre : ""}
                                                   onChange={(event) => this.onSelectChange(event, "genre")}>
                                         <option value=""/>

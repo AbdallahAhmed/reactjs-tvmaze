@@ -30,7 +30,7 @@ class Search extends Component {
         }
     };
 
-    onSearchInputChange = () => {
+    onSearchInputChange = (event) => {
         if (/\S/.test(event.target.value)) {
             this.getShows(event.target.value)
         } else {
@@ -49,9 +49,7 @@ class Search extends Component {
                         variant="outlined"
                         style={{width: '100%'}}
                         placeholder="Search for Shows"
-                        onChange={() => {
-                            this.onSearchInputChange();
-                        }}/>
+                        onChange={this.onSearchInputChange}/>
                 </Grid>
             </Grid>
         );

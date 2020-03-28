@@ -96,7 +96,7 @@ export const filterSuccess = (shows, params) => {
 
 export const filterShows = (params) => {
     return (dispatch, getState) => {
-        let {status, query} = getState().search;
+        let {status, query} = getState().shows.search;
         if (status || params.s) {
             let q = query ? query : params.s;
             dispatch(filterStart());

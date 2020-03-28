@@ -3,11 +3,11 @@ import AppBar from '@material-ui/core/AppBar';
 import {withRouter} from 'react-router-dom';
 import NavToolbar from "./partials/NavToolbar";
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <div style={{flexGrow: 1}}>
             <AppBar position="static">
-                <NavToolbar />
+                <NavToolbar {...props} />
             </AppBar>
         </div>
     )

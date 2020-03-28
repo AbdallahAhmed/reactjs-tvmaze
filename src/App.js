@@ -16,7 +16,7 @@ class App extends Component {
         return (
             <div style={{width: '100%'}}>
                 <BrowserRouter>
-                    <NavBar/>
+                    <NavBar {...this.props} />
                     <Switch>
                         <Route path="/auth/register" exact component={Register}/>
                         <Route path="/auth/login" exact component={Login}/>
@@ -24,7 +24,7 @@ class App extends Component {
                         {this.props.isAuth ? <Route path="/account" exact component={Edit}/> : null}
                         <Route path="/show/:id/seasons/:season_id/episode/:episode_id" exact component={Episode}/>
                         <Route path="/show/:id" name={"show"} component={ShowDetails}/>
-                        <Route path="/" exact component={Home}/>
+                        <Route path="/" exact component={Home} pathname={"home"}/>
                         <Route component={Home}/>
                     </Switch>
                 </BrowserRouter>

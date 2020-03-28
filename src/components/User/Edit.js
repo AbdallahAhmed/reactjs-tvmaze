@@ -166,8 +166,9 @@ class EditAccount extends Component {
             <div className={"Main"}>
                 <div>
                     <Avatar style={{
-                        height: "50%",
-                        width: "75%"
+                        height: "300px",
+                        width: "300px",
+                        margin: "auto"
                     }} alt={user.name} src={imageUrl}/>
                 </div>
                 <form onSubmit={this.submitHandler}>
@@ -180,8 +181,8 @@ class EditAccount extends Component {
                     {form}
                     {errorMessage}
                     {updatedMessage}
-                    <Button btnType={"Success"}>Update</Button>
-                </form>
+                    { loading ? null : <Button btnType={"Success"}>Update</Button>}
+                    </form>
             </div>
         );
     }

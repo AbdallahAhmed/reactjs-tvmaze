@@ -136,7 +136,7 @@ class Register extends Component {
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
-                    <Button btnType={"Success"}>Sign Up</Button>
+                    {this.props.loading ? null : <Button btnType={"Success"}>Sign Up</Button>}
                 </form>
             </div>
         );
