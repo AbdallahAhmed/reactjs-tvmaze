@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TextField from "@material-ui/core/TextField";
-import axios from "../../../axios";
+import {api} from "../../../axios";
 import SearchAutoComplete from "./SearchAutoComplete";
 import Grid from "@material-ui/core/Grid";
 import * as actions from '../../../store/actions/index';
@@ -13,7 +13,7 @@ class Search extends Component {
 
     getShows = (query) => {
         if (!this.props.home) {
-            axios.get('search/shows?q=' + query)
+            api.get('search/shows?q=' + query)
                 .then(response => {
                     this.setState({
                         options: response.data.map(show => {

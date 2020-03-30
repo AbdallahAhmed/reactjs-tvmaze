@@ -9,5 +9,6 @@ export {
     register,
     login,
     logout,
-    update
+    update,
+    updateShows
 } from './auth'

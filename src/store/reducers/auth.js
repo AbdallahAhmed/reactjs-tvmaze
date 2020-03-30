@@ -34,6 +34,16 @@ const logout = (state) => {
     };
 };
 
+const shows_count = (state, count) => {
+    let {user} = state;
+    user.shows_count = count;
+    localStorage.setItem("user", JSON.stringify(user));
+    return {
+        ...state,
+        user: user
+    }
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.REGISTER_START:
@@ -79,6 +89,8 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 updated: false
             };
+        case actionTypes.UPDATE_SHOWS_COUNT:
+            return shows_count(state, action.count)
         default:
             return state;
 

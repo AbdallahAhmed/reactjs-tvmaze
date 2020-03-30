@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Button from '../Layouts/UI/Button/Button';
 import Input from '../Layouts/UI/Input/Input';
-import  './Style.css';
+import './Style.css';
 import Spinner from "../Layouts/UI/Spinner/Spinner";
 import {login} from "../../store/actions/index";
 import {connect} from "react-redux";
@@ -68,7 +68,7 @@ class Login extends Component {
                 email: email.value,
                 password: password.value
             };
-            this.props.onLogin(data);
+            this.props.login(data);
         }
     };
 
@@ -134,9 +134,4 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onLogin: (data) => dispatch(login(data))
-    }
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, {login})(Login);

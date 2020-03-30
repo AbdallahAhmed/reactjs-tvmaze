@@ -6,7 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import axios from '../../../../axios';
+import {api} from '../../../../axios';
 import Button from "@material-ui/core/Button";
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 
@@ -19,10 +19,10 @@ class Season extends Component {
 
     componentDidMount() {
         const id = this.state.season.id;
-        axios.get('seasons/' + id + "/episodes")
-            .then(response => {
+        api.get('seasons/' + id + "/episodes")
+            .then(data => {
                 this.setState({
-                    episodes: response.data
+                    episodes: data
                 })
             }).catch(() => this.props.history.push('/'));
     };

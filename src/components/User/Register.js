@@ -85,7 +85,7 @@ class Register extends Component {
                 name: name.value,
                 password: password.value
             };
-            this.props.onRegister(data);
+            this.props.register(data);
         }
     };
 
@@ -151,9 +151,4 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onRegister: (data) => dispatch(register(data))
-    }
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, {register})(Register);

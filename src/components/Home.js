@@ -13,12 +13,14 @@ import Show from "./Shows/Show";
 import Search from "./Layouts/Search/Search";
 import {GENRES, TITLE, YEARS} from "../constants";
 import {connect} from "react-redux";
-import * as actions from '../store/actions/index';
+import {fetchShows, changePage, filterShows, updateShows} from '../store/actions/index';
+import {backend} from "../axios";
 
 class Home extends Component {
 
     state = {
         ref: React.createRef(),
+        removed: []
     };
 
     componentDidMount() {
@@ -26,7 +28,7 @@ class Home extends Component {
     };
 
     reset = () => {
-        this.props.initShows();
+        this.props.fetchShows();
         this.props.history.push("/")
     };
 
@@ -38,7 +40,7 @@ class Home extends Component {
         if (params.year || params.rate || params.genre || params.s)
             this.props.filterShows(params);
         else
-            this.props.initShows();
+            this.props.fetchShows();
     }
 
     onSearch = (query) => {
@@ -91,6 +93,15 @@ class Home extends Component {
         return "?" + array.join('&');
     };
 
+    handleSaveClick = async (id) => {
+        let {removed} = this.state;
+        const url = ! removed.includes(id) ? 'addFavorite/' : 'removeFavorite/';
+        await backend.post(url + id).then(res => {
+            this.props.updateShows(res.data.shows_count);
+        });
+        removed = !removed.includes(id) ? removed.filter(el => el !== id) : removed.concat(id);
+        this.setState({removed});
+    };
     render() {
         let {loading, search, query, pagedShows, paginationCount, paginationPage, params, error, filter} = this.props;
 
@@ -112,7 +123,7 @@ class Home extends Component {
                         </Grid>
                         {pagedShows.map(show => (
                             <Grid key={show.id} item xs={12} sm={6} lg={3} xl={3}>
-                                <Show {...this.props} show={show}/>
+                                <Show clicked={() => this.handleSaveClick(show.id)} {...this.props} show={show}/>
                             </Grid>
                         ))}
                     </Grid>
@@ -223,11 +234,11 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
+/*const mapDispatchToProps = dispatch => {
     return {
         initShows: () => dispatch(actions.fetchShows()),
         changePage: (next) => dispatch(actions.changePage(next)),
         filterShows: (params) => dispatch(actions.filterShows(params)),
     }
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+};*/
+export default connect(mapStateToProps, {fetchShows, changePage, filterShows, updateShows})(Home);

@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
+import {backend} from '../../axios';
 
-const url = "https://agile-basin-94102.herokuapp.com/api/auth/";
 
 export const registerStart = () => {
     return {
@@ -26,9 +25,9 @@ export const registerFail = (error) => {
 export const register = (data) => {
     return dispatch => {
         dispatch(registerStart());
-        axios.post(url + 'register', data)
+        backend.post('auth/register', data)
             .then(res => {
-                dispatch(registerSuccess(res.data.data));
+                dispatch(registerSuccess(res.data));
             }).catch(err => {
             dispatch(registerFail(err.response.data.errors));
         });
@@ -58,9 +57,9 @@ export const loginFail = (error) => {
 export const login = (data) => {
     return dispatch => {
         dispatch(loginStart());
-        axios.post(url + 'login', data)
+        backend.post('auth/login', data)
             .then(res => {
-                dispatch(loginSuccess(res.data.data));
+                dispatch(loginSuccess(res.data));
             }).catch(err => {
             dispatch(loginFail(err.response.data.errors));
         });
@@ -104,16 +103,24 @@ export const update = (data) => {
         if (data.password)
             formData.append("password", data.password);
 
-        axios.post(url + 'update', formData, {
+        backend.post('update', formData, {
             headers: {
-                'Authorization': "Bearer " + localStorage.getItem("token"),
                 'Content-Type': 'multipart/form-data',
             },
         })
             .then(res => {
-                dispatch(updateSuccess(res.data.data));
+                dispatch(updateSuccess(res.data));
             }).catch(err => {
             dispatch(updateFail(err.response.data.errors));
+        });
+    };
+};
+
+export const updateShows = count => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.UPDATE_SHOWS_COUNT,
+            count: count
         });
     };
 };

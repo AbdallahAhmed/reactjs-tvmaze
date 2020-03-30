@@ -10,6 +10,7 @@ import Search from "../../Search/Search";
 import Avatar from "@material-ui/core/Avatar/Avatar";
 import {Favorite} from "@material-ui/icons";
 import {connect} from "react-redux";
+import Badge from "@material-ui/core/Badge/Badge";
 
 
 const navToolbar = (props) => {
@@ -28,6 +29,7 @@ const navToolbar = (props) => {
     }));
     const classes = useStyles();
     const {user, isAuth} = props;
+    const {shows_count} = user;
     let [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleMenu = event => {
@@ -50,7 +52,7 @@ const navToolbar = (props) => {
                         TVMaze
                     </NavLink>
                 </Typography>
-                {props.history.location.pathname !== "/" ?(
+                {props.history.location.pathname !== "/" ? (
                     <div className={classes.search}>
                         <Search changed={() => {
                         }}/>
@@ -59,13 +61,16 @@ const navToolbar = (props) => {
                 {isAuth ? (
                     <div>
                         <IconButton
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleMenu}
+                            to={"/favorites"}
+                            aria-label="Favorites"
                             color="inherit"
+                            onClick={() => {
+                                props.history.push('/favorites');
+                            }}
                         >
-                            <Favorite/>
+                            <Badge badgeContent={shows_count} color="secondary">
+                                <Favorite/>
+                            </Badge>
                         </IconButton>
                         <IconButton
                             aria-label="account of current user"
@@ -75,7 +80,7 @@ const navToolbar = (props) => {
                             color="inherit"
                         >
                             <Avatar variant={"circle"}
-                                    src={ user && user.avatar ? user.avatar : null}/>
+                                    src={user && user.avatar ? user.avatar : null}/>
                         </IconButton>
                         <Menu
                             id="menu-appbar"

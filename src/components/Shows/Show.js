@@ -5,13 +5,16 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Img from "../Layouts/UI/Img";
 import {NavLink} from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton/IconButton";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
 
 const Show = (props) => {
     let {image, summary, name, title, id} = props.show;
     image = image && image.original ? image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
     summary = summary ? summary.replace(/<[^>]+>/g, '') : ""
     return (
-        <div>
+        <div style={{display: "block"}}>
             {props.show ? (
                 <Card>
                     {/*<CardMedia style={{
@@ -46,6 +49,9 @@ const Show = (props) => {
                         >
                             Go to show
                         </NavLink>
+                        <IconButton onClick={props.clicked} aria-label="add to favorites">
+                            <FavoriteIcon />
+                        </IconButton>
                     </CardActions>
                 </Card>
             ) : ""}

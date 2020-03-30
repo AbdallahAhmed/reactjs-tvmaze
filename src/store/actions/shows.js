@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios';
+import {api}  from '../../axios';
 
 export const showsFetchStart = () => {
     return {
@@ -24,9 +24,9 @@ export const showsFetchFail = (error) => {
 export const fetchShows = () => {
     return dispatch => {
         dispatch(showsFetchStart());
-        axios.get('/shows?page=0')
-            .then(response => {
-                dispatch(showsFetchSuccess(response.data));
+        api.get('/shows?page=0')
+            .then(data => {
+                dispatch(showsFetchSuccess(data));
             })
             .catch(err => {
                 dispatch(showsFetchFail(err))
@@ -66,11 +66,11 @@ export const search = (query) => {
     return dispatch => {
         dispatch(searchStart(query));
         let url = query ? 'search/shows?q=' + query : '/shows?page=0';
-        axios.get(url)
-            .then(response => {
-                let shows = query ? response.data.map(show => {
+        api.get(url)
+            .then(data => {
+                let shows = query ? data.map(show => {
                     return show.show;
-                }) : response.data;
+                }) : data;
                 dispatch(searchSuccess(shows));
             })
             .catch(error => {
@@ -100,9 +100,9 @@ export const filterShows = (params) => {
         if (status || params.s) {
             let q = query ? query : params.s;
             dispatch(filterStart());
-            axios.get('search/shows?q=' + q)
-                .then(response => {
-                    let shows = response.data.map(show => {
+            api.get('search/shows?q=' + q)
+                .then(data => {
+                    let shows = data.map(show => {
                         return show.show;
                     });
                     dispatch(filterSuccess(shows, params));
@@ -111,9 +111,9 @@ export const filterShows = (params) => {
                 })
         } else {
             dispatch(filterStart());
-            axios.get('/shows?page=0')
-                .then(response => {
-                    dispatch(filterSuccess(response.data, params));
+            api.get('/shows?page=0')
+                .then(data => {
+                    dispatch(filterSuccess(data, params));
                 })
                 .catch(err => {
                 })

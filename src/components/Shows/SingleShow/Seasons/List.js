@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from '../../../../axios';
+import {api} from '../../../../axios';
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary";
@@ -23,10 +23,10 @@ class List extends Component {
 
     getSeasons = () => {
         let {id} = this.props.match.params;
-        axios.get('shows/' + id + '/seasons')
-            .then(response => {
+        api.get('shows/' + id + '/seasons')
+            .then(data => {
                 this.setState({
-                    seasons: response.data,
+                    seasons: data,
                     id: id,
                     loading: false,
                 });

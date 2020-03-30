@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from "../../../axios";
+import {api} from "../../../axios";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -31,15 +31,16 @@ class ShowDetails extends Component {
         const id = this.props.match.params.id;
         if (id) {
             if (!this.state.show || (this.state.show && this.state.show.id !== +id)) {
-                axios.get('/shows/' + id)
-                    .then(response => {
-                        this.setState({show: response.data});
+                api.get('/shows/' + id)
+                    .then(data => {
+                        this.setState({show: data});
                     }).catch(() => this.props.history.push('/'));
             }
         }
     }
 
     render() {
+        console.log(this.state.show)
         let show = (
             <div style={{flexGrow: 1, padding: '2%'}}>
                 <LinearProgress letiant="query"/>

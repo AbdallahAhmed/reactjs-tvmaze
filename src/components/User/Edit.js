@@ -111,7 +111,7 @@ class EditAccount extends Component {
                 password: password.value,
                 imageData: this.state.imageData
             };
-            this.props.onUpdate(data);
+            this.props.update(data);
         }
     };
 
@@ -197,9 +197,4 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onUpdate: (data) => dispatch(update(data))
-    }
-};
-export default connect(mapStateToProps, mapDispatchToProps)(EditAccount);
+export default connect(mapStateToProps, {update})(EditAccount);

@@ -17,9 +17,4 @@ class Logout extends Component {
     }
 }
 
-const maptDispatchToProps = dispatch => {
-    return {
-        logout: () => dispatch(logout())
-    }
-};
-export default connect(null, maptDispatchToProps)(Logout);
+export default connect(null, {logout})(Logout);
