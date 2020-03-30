@@ -29,7 +29,6 @@ const navToolbar = (props) => {
     }));
     const classes = useStyles();
     const {user, isAuth} = props;
-    const {shows_count} = user;
     let [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleMenu = event => {
@@ -68,7 +67,7 @@ const navToolbar = (props) => {
                                 props.history.push('/favorites');
                             }}
                         >
-                            <Badge badgeContent={shows_count} color="secondary">
+                            <Badge badgeContent={user.shows_count} color="secondary">
                                 <Favorite/>
                             </Badge>
                         </IconButton>

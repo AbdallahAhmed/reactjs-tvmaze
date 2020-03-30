@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Button from '../Layouts/UI/Button/Button';
 import Input from '../Layouts/UI/Input/Input';
-import './Style.css';
+import './User.css';
 import Spinner from "../Layouts/UI/Spinner/Spinner";
 import {update} from "../../store/actions/index";
 import {connect} from "react-redux";
@@ -163,7 +163,7 @@ class EditAccount extends Component {
         }
         let updatedMessage = updated ?  <p>Changes have been saved successfully!</p> : null;
         return (
-            <div className={"Main"}>
+            <div className={"User"}>
                 <div>
                     <Avatar style={{
                         height: "300px",

@@ -34,9 +34,10 @@ const logout = (state) => {
     };
 };
 
-const shows_count = (state, count) => {
+const favorites = (state, favorites) => {
     let {user} = state;
-    user.shows_count = count;
+    user.shows_count = favorites.length;
+    user.shows_ids = favorites;
     localStorage.setItem("user", JSON.stringify(user));
     return {
         ...state,
@@ -90,7 +91,7 @@ const reducer = (state = initialState, action) => {
                 updated: false
             };
         case actionTypes.UPDATE_SHOWS_COUNT:
-            return shows_count(state, action.count)
+            return favorites(state, action.favorites)
         default:
             return state;
 

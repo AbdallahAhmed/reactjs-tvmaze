@@ -13,14 +13,14 @@ import Show from "./Shows/Show";
 import Search from "./Layouts/Search/Search";
 import {GENRES, TITLE, YEARS} from "../constants";
 import {connect} from "react-redux";
-import {fetchShows, changePage, filterShows, updateShows} from '../store/actions/index';
+import {fetchShows, changePage, filterShows, updateUserShows} from '../store/actions/index';
 import {backend} from "../axios";
 
 class Home extends Component {
 
     state = {
         ref: React.createRef(),
-        removed: []
+        favorites: this.props.user ? this.props.user.shows_ids : []
     };
 
     componentDidMount() {
@@ -94,14 +94,15 @@ class Home extends Component {
     };
 
     handleSaveClick = async (id) => {
-        let {removed} = this.state;
-        const url = ! removed.includes(id) ? 'addFavorite/' : 'removeFavorite/';
-        await backend.post(url + id).then(res => {
-            this.props.updateShows(res.data.shows_count);
-        });
-        removed = !removed.includes(id) ? removed.filter(el => el !== id) : removed.concat(id);
-        this.setState({removed});
+
+        let {favorites} = this.state;
+        const url = !favorites.includes(id) ? 'addFavorite/' : 'removeFavorite/';
+        await backend.post(url + id)
+        favorites = !favorites.includes(id) ? favorites.concat(id) : favorites.filter(el => el !== id);
+        this.props.updateUserShows(favorites);
+        this.setState({favorites});
     };
+
     render() {
         let {loading, search, query, pagedShows, paginationCount, paginationPage, params, error, filter} = this.props;
 
@@ -153,7 +154,7 @@ class Home extends Component {
                     {meta}
                     <Grid container justify="center" spacing={2}>
                         <Grid container justify='center'>
-                            <Search changed={(q) => this.onSearch(q)} home />
+                            <Search changed={(q) => this.onSearch(q)} home/>
                         </Grid>
                         <Grid container spacing={1} justify="center" style={{paddingTop: 12}}>
                             <Grid item lg={3}>
@@ -230,7 +231,8 @@ const mapStateToProps = state => {
         paginationCount: state.shows.paginationCount,
         error: state.shows.error,
         params: state.shows.filter.params,
-        filter: state.shows.filter.status
+        filter: state.shows.filter.status,
+        user: state.auth.user
     }
 };
 
@@ -241,4 +243,4 @@ const mapStateToProps = state => {
         filterShows: (params) => dispatch(actions.filterShows(params)),
     }
 };*/
-export default connect(mapStateToProps, {fetchShows, changePage, filterShows, updateShows})(Home);
+export default connect(mapStateToProps, {fetchShows, changePage, filterShows, updateUserShows})(Home);

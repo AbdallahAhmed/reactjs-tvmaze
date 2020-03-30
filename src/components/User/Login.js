@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Button from '../Layouts/UI/Button/Button';
 import Input from '../Layouts/UI/Input/Input';
-import './Style.css';
+import './User.css';
 import Spinner from "../Layouts/UI/Spinner/Spinner";
 import {login} from "../../store/actions/index";
 import {connect} from "react-redux";
@@ -114,7 +114,7 @@ class Login extends Component {
             authRedirect = <Redirect to={"/"}/>
         }
         return (
-            <div className={"Main"}>
+            <div className={"User"}>
                 {authRedirect}
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>

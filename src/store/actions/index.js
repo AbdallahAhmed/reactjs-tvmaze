@@ -10,5 +10,5 @@ export {
     login,
     logout,
     update,
-    updateShows
+    updateUserShows
 } from './auth'

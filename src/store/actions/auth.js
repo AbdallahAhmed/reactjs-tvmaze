@@ -116,11 +116,12 @@ export const update = (data) => {
     };
 };
 
-export const updateShows = count => {
+export const updateUserShows = favorites => {
     return dispatch => {
         dispatch({
             type: actionTypes.UPDATE_SHOWS_COUNT,
-            count: count
+            favorites: favorites
         });
     };
 };
+

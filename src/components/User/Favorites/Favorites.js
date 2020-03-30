@@ -4,12 +4,11 @@ import {api, backend} from "../../../axios";
 import Button from "@material-ui/core/Button/Button";
 import Grid from "@material-ui/core/Grid/Grid";
 import InfiniteScroll from "react-infinite-scroller";
-import Show from "../../Shows/Show";
 import Spinner from "../../Layouts/UI/Spinner/Spinner";
 import {Favorite} from "@material-ui/icons";
-import Container from "@material-ui/core/Container/Container";
 import {connect} from "react-redux";
-import {updateShows} from "../../../store/actions/index";
+import {updateUserShows} from "../../../store/actions/index";
+import ShowDetails from "./ShowDetails";
 
 class Favorites extends Component {
     state = {
@@ -19,7 +18,8 @@ class Favorites extends Component {
         offset: 0,
         hasMore: true,
         show: null,
-        removed: []
+        favorites: this.props.user.shows_ids
+
     };
 
     componentDidMount() {
@@ -35,7 +35,8 @@ class Favorites extends Component {
                     shows: shows.concat(result),
                     offset: offset + limit,
                     hasMore: result.length >= 20,
-                    show: !show ? result[0] : show
+                    show: !show ? result[0] : show,
+                    loading: false
                 });
             }).catch(err => console.log(err.response.data))
 
@@ -47,17 +48,16 @@ class Favorites extends Component {
     };
 
     handleSaveClick = async (id) => {
-        let {removed} = this.state;
-        const url = removed.includes(id) ? 'addFavorite/' : 'removeFavorite/';
-        await backend.post(url + id).then(res => {
-            this.props.updateShows(res.data.shows_count);
-        });
-        removed = removed.includes(id) ? removed.filter(el => el !== id) : removed.concat(id);
-        this.setState({removed});
+        let {favorites} = this.state;
+        const url = ! favorites.includes(id) ? 'addFavorite/' : 'removeFavorite/';
+        await backend.post(url + id);
+        favorites = favorites.includes(id) ? favorites.filter(el => el !== id) : favorites.concat(id);
+        this.props.updateUserShows(favorites);
+        this.setState({favorites});
     };
 
     render() {
-        const {show, removed, shows} = this.state;
+        const {show, shows, loading, favorites} = this.state;
         const result = shows.map((show, i) => (
             <div key={i} className={"Main"} onClick={() => this.handleShowClick(show.id)}
                  style={{cursor: "pointer"}}>
@@ -66,40 +66,53 @@ class Favorites extends Component {
         ));
         let showView = null;
         if (show) {
-            showView = <Show clicked={() => this.handleSaveClick(show.id)} {...this.props} show={show}/>;
-        }
-
-        return (
-            <div className={"Main"}>
-                <Grid container spacing={2}>
-                    <Grid item lg={4} style={{overflowY: "scroll", height: "500px"}}>
-                        <InfiniteScroll
-                            pageStart={0}
-                            loadMore={this.loadShows}
-                            hasMore={this.state.hasMore}
-                            loader={<Spinner key={0}/>}
-                            useWindow={false}
-                            initialLoad={false}
-                        >
-                            {result}
-                        </InfiniteScroll>
-                    </Grid>
-                    <Grid item lg={6}>
-                        {showView}
-                    </Grid>
-                    {showView ? (
-                        <Grid item lg={2}>
+            showView = (
+                <Grid item lg={8}>
+                    <Grid container>
+                        <Grid item lg={11}>
+                            <ShowDetails clicked={() => this.handleSaveClick(show.id)} {...this.props} show={show}/>
+                        </Grid>
+                        <Grid item lg={1}>
                             <Button onClick={() => this.handleSaveClick(show.id)} variant={"contained"}
                                     color={"inherit"}>
-                                <Favorite color={removed.includes(show.id) ? "disabled" : "primary"}/>
+                                <Favorite color={favorites.includes(show.id) ? "primary" : "disabled"}/>
                             </Button>
                         </Grid>
-                    ) : null}
-
+                    </Grid>
+                    <Grid item lg={12}>
+                        <ShowDetails clicked={() => this.handleSaveClick(show.id)} info {...this.props} show={show}/>
+                    </Grid>
                 </Grid>
+            )
+        }
+        return (
+            <div className={"Main"}>
+                {!loading && !shows.length
+                    ? <p>You Don't Have Any Favorite Shows Yet!</p>
+                    : loading ? (<Spinner style={{fontSize: "8px", margin: "24px auto"}}/>)
+                        : <Grid container spacing={2}>
+                            <Grid item lg={4} style={{overflowY: "scroll", height: "500px"}}>
+                                <InfiniteScroll
+                                    loadMore={this.loadShows}
+                                    hasMore={this.state.hasMore}
+                                    loader={<Spinner style={{fontSize: "8px", margin: "24px auto"}} key={0}/>}
+                                    useWindow={false}
+                                    initialLoad={false}
+                                >
+                                    {result}
+                                </InfiniteScroll>
+                            </Grid>
+                            {showView}
+                        </Grid>
+                }
             </div>
         );
     }
 }
 
-export default connect(null, {updateShows})(Favorites);
+const mapStateToProps = state => {
+    return {
+        user: state.auth.user
+    }
+};
+export default connect(mapStateToProps, {updateUserShows})(Favorites);
