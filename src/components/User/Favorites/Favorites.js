@@ -91,7 +91,7 @@ class Favorites extends Component {
                     ? <p>You Don't Have Any Favorite Shows Yet!</p>
                     : loading ? (<Spinner style={{fontSize: "8px", margin: "24px auto"}}/>)
                         : <Grid container spacing={2}>
-                            <Grid item lg={4} style={{overflowY: "scroll", height: "500px"}}>
+                            <Grid item lg={4} md={12} sm={12} style={{overflowY: "scroll", height: "500px"}}>
                                 <InfiniteScroll
                                     loadMore={this.loadShows}
                                     hasMore={this.state.hasMore}
