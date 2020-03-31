@@ -14,9 +14,9 @@ class Search extends Component {
     getShows = (query) => {
         if (!this.props.home) {
             api.get('search/shows?q=' + query)
-                .then(response => {
+                .then(data => {
                     this.setState({
-                        options: response.data.map(show => {
+                        options: data.map(show => {
                             return show.show;
                         })
                     });

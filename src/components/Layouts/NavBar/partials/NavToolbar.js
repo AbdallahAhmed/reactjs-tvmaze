@@ -13,7 +13,7 @@ import {connect} from "react-redux";
 import Badge from "@material-ui/core/Badge/Badge";
 
 
-const navToolbar = (props) => {
+const NavToolbar = (props) => {
     const useStyles = makeStyles(theme => ({
         root: {
             flexGrow: 1,
@@ -149,4 +149,4 @@ const mapStateToProps = state => {
         user: state.auth.user
     }
 };
-export default connect(mapStateToProps)(navToolbar);
+export default connect(mapStateToProps)(NavToolbar);
