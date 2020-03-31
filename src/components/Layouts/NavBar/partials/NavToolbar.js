@@ -28,7 +28,7 @@ const NavToolbar = (props) => {
         },
     }));
     const classes = useStyles();
-    const {user, isAuth} = props;
+    const {user, isAuth, shows_count, avatar} = props;
     let [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleMenu = event => {
@@ -53,8 +53,7 @@ const NavToolbar = (props) => {
                 </Typography>
                 {props.history.location.pathname !== "/" ? (
                     <div className={classes.search}>
-                        <Search changed={() => {
-                        }}/>
+                        <Search {...props} />
                     </div>
                 ) : null}
                 {isAuth ? (
@@ -67,7 +66,7 @@ const NavToolbar = (props) => {
                                 props.history.push('/favorites');
                             }}
                         >
-                            <Badge badgeContent={user.shows_count} color="secondary">
+                            <Badge badgeContent={shows_count} color="secondary">
                                 <Favorite/>
                             </Badge>
                         </IconButton>
@@ -79,7 +78,7 @@ const NavToolbar = (props) => {
                             color="inherit"
                         >
                             <Avatar variant={"circle"}
-                                    src={user && user.avatar ? user.avatar : null}/>
+                                    src={avatar}/>
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -146,7 +145,9 @@ const NavToolbar = (props) => {
 const mapStateToProps = state => {
     return {
         isAuth: !!state.auth.token,
-        user: state.auth.user
+        user: state.auth.user,
+        shows_count: state.auth.user ? state.auth.user.shows_count : null,
+        avatar: state.auth.user ? state.auth.user.avatar : null
     }
 };
 export default connect(mapStateToProps)(NavToolbar);

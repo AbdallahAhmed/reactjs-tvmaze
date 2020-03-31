@@ -9,7 +9,7 @@ api.interceptors.response.use(response => {
 });
 
 export const backend = axios.create({
-    baseURL: /*"http://fleet-management.local/api/"*/"https://agile-basin-94102.herokuapp.com/api/"
+    baseURL: "http://fleet-management.local/api/"//"https://agile-basin-94102.herokuapp.com/api/"
 });
 backend.interceptors.response.use(response => {
     return response.data

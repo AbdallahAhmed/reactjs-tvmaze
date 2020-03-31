@@ -3,7 +3,7 @@ import NavBar from './components/Layouts/NavBar/NavBar';
 import Home from './components/Home';
 import ShowDetails from './components/Shows/SingleShow/ShowDetails';
 
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import Episode from "./components/Shows/SingleShow/Seasons/Episodes/Episode";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
@@ -27,7 +27,7 @@ class App extends Component {
                         <Route path="/show/:id/seasons/:season_id/episode/:episode_id" exact component={Episode}/>
                         <Route path="/show/:id" name={"show"} component={ShowDetails}/>
                         <Route path="/" exact component={Home} pathname={"home"}/>
-                        <Route component={Home}/>
+                        <Redirect to={"/"}/>
                     </Switch>
                 </BrowserRouter>
             </div>

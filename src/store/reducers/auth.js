@@ -36,8 +36,8 @@ const logout = (state) => {
 
 const favorites = (state, favorites) => {
     let {user} = state;
-    user.shows_count = favorites.length;
-    user.shows_ids = favorites;
+    user.shows_count = favorites.shows_count;
+    user.shows_ids = favorites.shows_ids;
     localStorage.setItem("user", JSON.stringify(user));
     return {
         ...state,

@@ -20,7 +20,6 @@ class Home extends Component {
 
     state = {
         ref: React.createRef(),
-        favorites: this.props.user ? this.props.user.shows_ids : []
     };
 
     componentDidMount() {
@@ -94,18 +93,13 @@ class Home extends Component {
     };
 
     handleSaveClick = async (id) => {
-
-        let {favorites} = this.state;
-        const url = !favorites.includes(id) ? 'addFavorite/' : 'removeFavorite/';
-        await backend.post(url + id)
-        favorites = !favorites.includes(id) ? favorites.concat(id) : favorites.filter(el => el !== id);
-        this.props.updateUserShows(favorites);
-        this.setState({favorites});
+        const url = !this.props.favorites_ids.includes(id) ? 'addFavorite/' : 'removeFavorite/';
+        const res = await backend.post(url + id);
+        this.props.updateUserShows(res.data);
     };
 
     render() {
         let {loading, search, query, pagedShows, paginationCount, paginationPage, params, error, filter} = this.props;
-
         let {year, genre, rate} = params;
         let pagination = "";
         let showsList = null;
@@ -232,7 +226,7 @@ const mapStateToProps = state => {
         error: state.shows.error,
         params: state.shows.filter.params,
         filter: state.shows.filter.status,
-        user: state.auth.user
+        favorites_ids: state.auth.user ? state.auth.user.shows_ids : []
     }
 };
 

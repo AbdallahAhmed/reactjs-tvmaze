@@ -40,7 +40,6 @@ class ShowDetails extends Component {
     }
 
     render() {
-        console.log(this.state.show)
         let show = (
             <div style={{flexGrow: 1, padding: '2%'}}>
                 <LinearProgress letiant="query"/>

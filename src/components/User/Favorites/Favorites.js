@@ -18,8 +18,6 @@ class Favorites extends Component {
         offset: 0,
         hasMore: true,
         show: null,
-        favorites: this.props.user.shows_ids
-
     };
 
     componentDidMount() {
@@ -48,16 +46,13 @@ class Favorites extends Component {
     };
 
     handleSaveClick = async (id) => {
-        let {favorites} = this.state;
-        const url = ! favorites.includes(id) ? 'addFavorite/' : 'removeFavorite/';
-        await backend.post(url + id);
-        favorites = favorites.includes(id) ? favorites.filter(el => el !== id) : favorites.concat(id);
-        this.props.updateUserShows(favorites);
-        this.setState({favorites});
+        const url = ! this.props.shows_ids.includes(id) ? 'addFavorite/' : 'removeFavorite/';
+        const res = await backend.post(url + id);
+        this.props.updateUserShows(res.data);
     };
 
     render() {
-        const {show, shows, loading, favorites} = this.state;
+        const {show, shows, loading} = this.state;
         const result = shows.map((show, i) => (
             <div key={i} className={"Main"} onClick={() => this.handleShowClick(show.id)}
                  style={{cursor: "pointer"}}>
@@ -75,7 +70,7 @@ class Favorites extends Component {
                         <Grid item lg={1}>
                             <Button onClick={() => this.handleSaveClick(show.id)} variant={"contained"}
                                     color={"inherit"}>
-                                <Favorite color={favorites.includes(show.id) ? "primary" : "disabled"}/>
+                                <Favorite color={this.props.shows_ids.includes(show.id) ? "primary" : "disabled"}/>
                             </Button>
                         </Grid>
                     </Grid>
@@ -112,7 +107,7 @@ class Favorites extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.auth.user
+        shows_ids: state.auth.user.shows_ids
     }
 };
 export default connect(mapStateToProps, {updateUserShows})(Favorites);

@@ -14,7 +14,7 @@ const Show = (props) => {
     let {image, summary, name, title, id} = props.show;
     image = image && image.original ? image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
     summary = summary ? summary.replace(/<[^>]+>/g, '') : "";
-    let [color, setColor] = useState(props.isAuth ? props.user.shows_ids.includes(id) : false);
+    let [color, setColor] = useState(props.isAuth ? props.favorites_ids.includes(id) : false);
     return (
         <div style={{display: "block"}}>
             {props.show ? (
@@ -69,7 +69,7 @@ const Show = (props) => {
 const mapStateToProps = state => {
     return {
         isAuth: state.auth.token,
-        user: state.auth.user
+        shows_ids: this.isAuth ? state.auth.user.shows_ids : []
     }
 };
 
