@@ -106,6 +106,7 @@ export const update = (data) => {
         backend.post('update', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${localStorage.getItem("token")}`
             },
         })
             .then(res => {

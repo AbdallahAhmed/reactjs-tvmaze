@@ -149,9 +149,7 @@ class EditAccount extends Component {
         ));
 
         if (loading)
-            form =
-                <Spinner/>
-            ;
+            form = <Spinner/>;
 
         let errorMessage = null;
         if (error) {
@@ -161,7 +159,7 @@ class EditAccount extends Component {
                 </div>
             ));
         }
-        let updatedMessage = updated ?  <p>Changes have been saved successfully!</p> : null;
+        let updatedMessage = updated && <p>Changes have been saved successfully!</p>;
         return (
             <div className={"User"}>
                 <div>
@@ -181,7 +179,7 @@ class EditAccount extends Component {
                     {form}
                     {errorMessage}
                     {updatedMessage}
-                    { loading ? null : <Button btnType={"Success"}>Update</Button>}
+                    { !loading && <Button btnType={"Success"}>Update</Button>}
                     </form>
             </div>
         );

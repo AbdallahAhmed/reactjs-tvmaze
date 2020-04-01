@@ -52,7 +52,7 @@ class Home extends Component {
 
     onPageChange = (event, value) => {
         if (this.props.paginationPage !== value) {
-            this.props.changePage(value)
+            this.props.changePage(value);
             this.refs["shows"].scrollIntoView({behavior: 'smooth'});
         }
     };
@@ -94,7 +94,11 @@ class Home extends Component {
 
     handleSaveClick = async (id) => {
         const url = !this.props.favorites_ids.includes(id) ? 'addFavorite/' : 'removeFavorite/';
-        const res = await backend.post(url + id);
+        const res = await backend.post(url + id, null, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        });
         this.props.updateUserShows(res.data);
     };
 
@@ -123,12 +127,12 @@ class Home extends Component {
                         ))}
                     </Grid>
                 );
-                pagination = pagedShows.length ? (
+                pagination = pagedShows.length && (
                     <Pagination
                         variant="outlined" shape="rounded" color="primary"
                         page={paginationPage} onChange={this.onPageChange}
                         count={paginationCount}/>
-                ) : "";
+                );
             } else {
                 showsList = <p>{error}</p>
             }
@@ -156,7 +160,7 @@ class Home extends Component {
                                     <InputLabel htmlFor="age-native-simple" shrink={year !== ""} style={{
                                         position: "relative"
                                     }}>Year</InputLabel>
-                                    <NativeSelect value={year !== "" ? year : ""}
+                                    <NativeSelect value={year !== "" && year}
                                                   onChange={(event) => this.onSelectChange(event, "year")}>
                                         <option value="">{null}</option>
                                         {YEARS.map(year => (
@@ -170,7 +174,7 @@ class Home extends Component {
                                     <InputLabel htmlFor="age-native-simple" shrink={rate !== ""} style={{
                                         position: "relative",
                                     }}>Rate</InputLabel>
-                                    <NativeSelect value={rate !== "" ? rate : ""}
+                                    <NativeSelect value={rate !== "" && rate}
                                                   onChange={(event) => this.onSelectChange(event, "rate")}>
                                         <option value=""/>
                                         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(rate => (
@@ -184,7 +188,7 @@ class Home extends Component {
                                     <InputLabel htmlFor="age-native-simple" shrink={genre !== ""} style={{
                                         position: "relative"
                                     }}>Genre</InputLabel>
-                                    <NativeSelect value={genre !== "" ? genre : ""}
+                                    <NativeSelect value={genre !== "" && genre}
                                                   onChange={(event) => this.onSelectChange(event, "genre")}>
                                         <option value=""/>
                                         {GENRES.map(gen => (
@@ -195,7 +199,7 @@ class Home extends Component {
                             </Grid>
                             <Grid item lg={3}>
                                 <Button onClick={this.reset} variant={"contained"} color={"primary"}
-                                        style={{display: filter ? "" : "none"}}>
+                                        style={{display: !filter && "none"}}>
                                     Reset
                                 </Button>
                             </Grid>
@@ -226,15 +230,8 @@ const mapStateToProps = state => {
         error: state.shows.error,
         params: state.shows.filter.params,
         filter: state.shows.filter.status,
-        favorites_ids: state.auth.user ? state.auth.user.shows_ids : []
+        favorites_ids: state.auth.isAuth() ? state.auth.user.shows_ids : []
     }
 };
 
-/*const mapDispatchToProps = dispatch => {
-    return {
-        initShows: () => dispatch(actions.fetchShows()),
-        changePage: (next) => dispatch(actions.changePage(next)),
-        filterShows: (params) => dispatch(actions.filterShows(params)),
-    }
-};*/
 export default connect(mapStateToProps, {fetchShows, changePage, filterShows, updateUserShows})(Home);

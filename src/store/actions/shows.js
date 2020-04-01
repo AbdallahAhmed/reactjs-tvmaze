@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import {api}  from '../../axios';
+import {api} from '../../axios';
 
 export const showsFetchStart = () => {
     return {

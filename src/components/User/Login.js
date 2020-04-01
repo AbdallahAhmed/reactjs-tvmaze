@@ -130,7 +130,7 @@ const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
         error: state.auth.error,
-        isAuth: state.auth.token
+        isAuth: state.auth.isAuth()
     }
 };
 

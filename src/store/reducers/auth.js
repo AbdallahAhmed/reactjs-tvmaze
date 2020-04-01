@@ -5,7 +5,10 @@ const initialState = {
     token: localStorage.getItem("token") || null,
     error: null,
     loading: false,
-    updated: false
+    updated: false,
+    isAuth() {
+        return Boolean(this.token)
+    }
 };
 
 const user = (state, data) => {
@@ -91,7 +94,7 @@ const reducer = (state = initialState, action) => {
                 updated: false
             };
         case actionTypes.UPDATE_SHOWS_COUNT:
-            return favorites(state, action.favorites)
+            return favorites(state, action.favorites);
         default:
             return state;
 

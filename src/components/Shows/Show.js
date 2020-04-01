@@ -14,18 +14,11 @@ const Show = (props) => {
     let {image, summary, name, title, id} = props.show;
     image = image && image.original ? image.original : "//static.tvmaze.com/images/no-img/no-img-portrait-text.png";
     summary = summary ? summary.replace(/<[^>]+>/g, '') : "";
-    let [color, setColor] = useState(props.isAuth ? props.favorites_ids.includes(id) : false);
+    let [color, setColor] = useState(props.isAuth && props.favorites_ids.includes(id));
     return (
         <div style={{display: "block"}}>
             {props.show ? (
                 <Card>
-                    {/*<CardMedia style={{
-                        height: 0,
-                        paddingTop: '50%'
-                    }}
-                               image={image}
-                               title={props.show.title}
-                    />*/}
                     <Img
                         style={{
                             height: 300,
@@ -52,14 +45,14 @@ const Show = (props) => {
                             Go to show
                         </NavLink>
                         {props.isAuth
-                            ? <IconButton onClick={() => {
+                            && <IconButton onClick={() => {
                                 props.clicked();
                                 setColor(!color);
                             }} aria-label="add to favorites">
                                 <FavoriteIcon
                                     color={color ? "secondary" : "inherit"}/>
                             </IconButton>
-                            : null}
+                            }
                     </CardActions>
                 </Card>
             ) : ""}
@@ -68,8 +61,8 @@ const Show = (props) => {
 };
 const mapStateToProps = state => {
     return {
-        isAuth: state.auth.token,
-        shows_ids: this.isAuth ? state.auth.user.shows_ids : []
+        isAuth: state.auth.isAuth(),
+        shows_ids: state.auth.isAuth() ? state.auth.user.shows_ids : []
     }
 };
 

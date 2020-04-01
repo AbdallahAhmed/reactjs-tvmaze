@@ -88,43 +88,43 @@ class ShowDetails extends Component {
                                     <Typography gutterBottom variant={"h6"}>
                                         Show Info
                                     </Typography>
-                                    {network ? (
+                                    {network && (
                                         <Typography>
                                             {"Network: " + network.name}
                                         </Typography>
-                                    ) : ""}
-                                    {status ? (
+                                    )}
+                                    {status && (
                                         <Typography>
                                             {"Status: " + status}
                                         </Typography>
-                                    ) : ""}
-                                    {genres ? (
+                                    )}
+                                    {genres && (
                                         <Typography>
                                             {"Genres: " + genres}
                                         </Typography>
-                                    ) : ""}
-                                    {premiered ? (
+                                    )}
+                                    {premiered && (
                                         <Typography>
                                             {"Year: " + premiered.substring(0, 4)}
                                         </Typography>
-                                    ) : ""}
-                                    {language ? (
+                                    )}
+                                    {language && (
                                         <Typography>
                                             {"Language: " + language}
                                         </Typography>
-                                    ) : ""}
-                                    {officialSite ? (
+                                    )}
+                                    {officialSite && (
                                         <Typography>
                                             Official Site:
                                             <Link target={"_blank"}
                                                   href={officialSite}>{" " + officialSite}</Link>
                                         </Typography>
-                                    ) : ""}
-                                    {rating.average ? (
+                                    )}
+                                    {rating.average && (
                                         <Typography>
                                             {"Rating: " + rating.average + " / 10"}
                                         </Typography>
-                                    ) : ""}
+                                    )}
                                 </CardContent>
                             </Card>
                         </Grid>

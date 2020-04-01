@@ -51,11 +51,11 @@ const NavToolbar = (props) => {
                         TVMaze
                     </NavLink>
                 </Typography>
-                {props.history.location.pathname !== "/" ? (
+                {props.history.location.pathname !== "/" && (
                     <div className={classes.search}>
                         <Search {...props} />
                     </div>
-                ) : null}
+                )}
                 {isAuth ? (
                     <div>
                         <IconButton
@@ -144,10 +144,10 @@ const NavToolbar = (props) => {
 
 const mapStateToProps = state => {
     return {
-        isAuth: !!state.auth.token,
+        isAuth: state.auth.isAuth(),
         user: state.auth.user,
-        shows_count: state.auth.user ? state.auth.user.shows_count : null,
-        avatar: state.auth.user ? state.auth.user.avatar : null
+        shows_count: state.auth.isAuth() ? state.auth.user.shows_count : null,
+        avatar: state.auth.isAuth() ? state.auth.user.avatar : null
     }
 };
 export default connect(mapStateToProps)(NavToolbar);

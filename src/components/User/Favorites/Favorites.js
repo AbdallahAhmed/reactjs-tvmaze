@@ -26,7 +26,11 @@ class Favorites extends Component {
 
     loadShows = async () => {
         let {offset, limit, shows, show} = this.state;
-        await backend.get(`favorites?limit=${limit}&offset=${offset}`)
+        await backend.get(`favorites?limit=${limit}&offset=${offset}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        })
             .then(res => {
                 const result = res.data.shows;
                 this.setState({
@@ -41,13 +45,19 @@ class Favorites extends Component {
     };
 
     handleShowClick = async (id) => {
-        const show = await api.get(`shows/${id}`);
-        this.setState({show});
+        if (this.state.show.id !== id) {
+            const show = await api.get(`shows/${id}`);
+            this.setState({show});
+        }
     };
 
     handleSaveClick = async (id) => {
-        const url = ! this.props.shows_ids.includes(id) ? 'addFavorite/' : 'removeFavorite/';
-        const res = await backend.post(url + id);
+        const url = !this.props.shows_ids.includes(id) ? 'addFavorite/' : 'removeFavorite/';
+        const res = await backend.post(url + id, null, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        });
         this.props.updateUserShows(res.data);
     };
 
@@ -107,7 +117,7 @@ class Favorites extends Component {
 
 const mapStateToProps = state => {
     return {
-        shows_ids: state.auth.user.shows_ids
+        shows_ids: state.auth.user.shows_ids,
     }
 };
 export default connect(mapStateToProps, {updateUserShows})(Favorites);

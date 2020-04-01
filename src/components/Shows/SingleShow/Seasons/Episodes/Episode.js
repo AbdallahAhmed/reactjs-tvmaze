@@ -88,32 +88,32 @@ class Episode extends Component {
                                         <Typography gutterBottom variant={"h6"}>
                                             Episode Info
                                         </Typography>
-                                        {this.state.show.name ? (
+                                        {this.state.show.name && (
                                             <Typography>
                                                 {"Show name: "}
                                                 <NavLink style={{textDecoration: "none"}} to={'/show/' + id}>
                                                     {this.state.show.name}
                                                 </NavLink>
                                             </Typography>
-                                        ) : ""}
-                                        {season ? (
+                                        )}
+                                        {season && (
                                             <Typography>
                                                 Number:
                                                 {"Season " + season}
                                                 {number ? ", Episode " + season : ""}
                                             </Typography>
-                                        ) : ""}
-                                        {airdate ? (
+                                        )}
+                                        {airdate && (
                                             <Typography>
                                                 {"Airdate: " + airdate}
                                             </Typography>
-                                        ) : ""}
-                                        {url ? (
+                                        )}
+                                        {url && (
                                             <Typography>
                                                 URL: <Link target={"_blank"}
                                                            href={url}>{" " + url}</Link>
                                             </Typography>
-                                        ) : ""}
+                                        )}
                                     </CardContent>
                                 </Card>
                             </Grid>
